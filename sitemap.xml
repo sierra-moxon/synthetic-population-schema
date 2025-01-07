@@ -125,6 +125,14 @@
          <lastmod>2025-01-07</lastmod>
     </url>
     <url>
+         <loc>https://sierra-moxon.github.io/synthetic-population-schema/block_groups/</loc>
+         <lastmod>2025-01-07</lastmod>
+    </url>
+    <url>
+         <loc>https://sierra-moxon.github.io/synthetic-population-schema/counties/</loc>
+         <lastmod>2025-01-07</lastmod>
+    </url>
+    <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/county_fips_code/</loc>
          <lastmod>2025-01-07</lastmod>
     </url>
@@ -149,7 +157,19 @@
          <lastmod>2025-01-07</lastmod>
     </url>
     <url>
+         <loc>https://sierra-moxon.github.io/synthetic-population-schema/households/</loc>
+         <lastmod>2025-01-07</lastmod>
+    </url>
+    <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/name/</loc>
+         <lastmod>2025-01-07</lastmod>
+    </url>
+    <url>
+         <loc>https://sierra-moxon.github.io/synthetic-population-schema/persons/</loc>
+         <lastmod>2025-01-07</lastmod>
+    </url>
+    <url>
+         <loc>https://sierra-moxon.github.io/synthetic-population-schema/pumas/</loc>
          <lastmod>2025-01-07</lastmod>
     </url>
     <url>
@@ -186,6 +206,10 @@
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/tract_fips_code/</loc>
+         <lastmod>2025-01-07</lastmod>
+    </url>
+    <url>
+         <loc>https://sierra-moxon.github.io/synthetic-population-schema/tracts/</loc>
          <lastmod>2025-01-07</lastmod>
     </url>
 </urlset>

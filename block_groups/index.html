@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://sierra-moxon.github.io/synthetic-population-schema/fips_code/">
+        <link rel="canonical" href="https://sierra-moxon.github.io/synthetic-population-schema/block_groups/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: fips_code - synthetic-population-schema</title>
+        <title>Slot: block_groups - synthetic-population-schema</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-fips_code" class="md-skip">
+        <a href="#slot-block_groups" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: fips_code
+              Slot: block_groups
             
           </span>
         </div>
@@ -256,13 +256,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    Inheritance
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     Applicable Classes
   </a>
@@ -324,25 +317,17 @@
                 
                   
 
-  <a href="https://github.com/sierra-moxon/synthetic-population-schema/edit/master/docs/fips_code.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/sierra-moxon/synthetic-population-schema/edit/master/docs/block_groups.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-fips_code">Slot: fips_code</h1>
-<p><em>FIPS code of the state.</em></p>
-<p>URI: <a href="https://w3id.org/sierra-moxon/synthetic-population-schema/fips_code">synthetic_population_schema:fips_code</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><strong>fips_code</strong><ul>
-<li><a href="../state_fips_code/">state_fips_code</a></li>
-<li><a href="../county_fips_code/">county_fips_code</a></li>
-<li><a href="../tract_fips_code/">tract_fips_code</a></li>
-<li><a href="../block_group_fips_code/">block_group_fips_code</a></li>
-</ul>
-</li>
-</ul>
+<h1 id="slot-block_groups">Slot: block_groups</h1>
+<p><em>Block groups within the tract.</em></p>
+<p>URI: <a href="https://w3id.org/sierra-moxon/synthetic-population-schema/block_groups">synthetic_population_schema:block_groups</a></p>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -354,26 +339,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../PUMA/">PUMA</a></td>
-<td>Public Use Microdata Area with properties</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../State/">State</a></td>
-<td>A state with associated properties</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../County/">County</a></td>
-<td>A county with associated properties</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../BlockGroup/">BlockGroup</a></td>
-<td>A block group within a tract</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../Tract/">Tract</a></td>
 <td>A census tract with properties</td>
 <td>no</td>
@@ -382,7 +347,12 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>
+<p>Range: <a href="../BlockGroup/">BlockGroup</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
+</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -400,29 +370,26 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>synthetic_population_schema:fips_code</td>
+<td>synthetic_population_schema:block_groups</td>
 </tr>
 <tr>
 <td>native</td>
-<td>synthetic_population_schema:fips_code</td>
+<td>synthetic_population_schema:block_groups</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: fips_code
-description: FIPS code of the state.
+<pre><code class="language-yaml">name: block_groups
+description: Block groups within the tract.
 from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
 rank: 1000
-alias: fips_code
+alias: block_groups
 domain_of:
-- State
-- PUMA
-- County
 - Tract
-- BlockGroup
-range: string
+range: BlockGroup
+multivalued: true
 
 </code></pre>
 

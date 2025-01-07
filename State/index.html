@@ -202,9 +202,27 @@
     click State href "../State"
       State : abbreviation
 
+      State : counties
+
+
+
+
+    State --&gt; "*" County : counties
+    click County href "../County"
+
+
       State : fips_code
 
       State : name
+
+      State : pumas
+
+
+
+
+    State --&gt; "*" PUMA : pumas
+    click PUMA href "../PUMA"
+
 
 
 </div>
@@ -236,6 +254,18 @@
 <td><a href="../abbreviation/">abbreviation</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Abbreviation of the entity</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../counties/">counties</a></td>
+<td>* <br/> <a href="../County/">County</a></td>
+<td>Counties within the state</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../pumas/">pumas</a></td>
+<td>* <br/> <a href="../PUMA/">PUMA</a></td>
+<td>Public Use Microdata Areas within the state</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -275,6 +305,8 @@ slots:
 - fips_code
 - name
 - abbreviation
+- counties
+- pumas
 
 </code></pre>
 </details>
@@ -319,6 +351,28 @@ attributes:
     domain_of:
     - State
     range: string
+  counties:
+    name: counties
+    description: Counties within the state.
+    from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+    rank: 1000
+    alias: counties
+    owner: State
+    domain_of:
+    - State
+    range: County
+    multivalued: true
+  pumas:
+    name: pumas
+    description: Public Use Microdata Areas within the state.
+    from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+    rank: 1000
+    alias: pumas
+    owner: State
+    domain_of:
+    - State
+    range: PUMA
+    multivalued: true
 
 </code></pre>
 </details>

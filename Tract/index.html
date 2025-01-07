@@ -147,6 +147,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+    Usages
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
     Identifier and Mapping Information
   </a>
@@ -200,6 +205,15 @@
 <div class="mermaid"> classDiagram
     class Tract
     click Tract href "../Tract"
+      Tract : block_groups
+
+
+
+
+    Tract --&gt; "*" BlockGroup : block_groups
+    click BlockGroup href "../BlockGroup"
+
+
       Tract : county_fips_code
 
       Tract : fips_code
@@ -238,6 +252,31 @@
 <td>County FIPS code</td>
 <td>direct</td>
 </tr>
+<tr>
+<td><a href="../block_groups/">block_groups</a></td>
+<td>* <br/> <a href="../BlockGroup/">BlockGroup</a></td>
+<td>Block groups within the tract</td>
+<td>direct</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../County/">County</a></td>
+<td><a href="../tracts/">tracts</a></td>
+<td>range</td>
+<td><a href="./">Tract</a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -275,6 +314,7 @@ slots:
 - fips_code
 - state_fips_code
 - county_fips_code
+- block_groups
 
 </code></pre>
 </details>
@@ -326,6 +366,17 @@ attributes:
     - BlockGroup
     - Person
     range: string
+  block_groups:
+    name: block_groups
+    description: Block groups within the tract.
+    from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+    rank: 1000
+    alias: block_groups
+    owner: Tract
+    domain_of:
+    - Tract
+    range: BlockGroup
+    multivalued: true
 
 </code></pre>
 </details>
