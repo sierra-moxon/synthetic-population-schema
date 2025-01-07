@@ -309,6 +309,10 @@
 <td>native</td>
 <td>synthetic_population_schema:BlockGroup</td>
 </tr>
+<tr>
+<td>exact</td>
+<td>wikidata:Q5058963</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -320,6 +324,8 @@ description: a statistical division within a census tract, typically containing 
   600 and 3,000 people,  which is used by the Census Bureau to present demographic
   data at a smaller, more localized level than  the entire census tract.
 from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+exact_mappings:
+- wikidata:Q5058963
 slots:
 - fips_code
 - tract_fips_code
@@ -336,6 +342,8 @@ description: a statistical division within a census tract, typically containing 
   600 and 3,000 people,  which is used by the Census Bureau to present demographic
   data at a smaller, more localized level than  the entire census tract.
 from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+exact_mappings:
+- wikidata:Q5058963
 attributes:
   fips_code:
     name: fips_code
@@ -373,8 +381,7 @@ attributes:
     description: State FIPS code.
     from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
     exact_mappings:
-    - wikidata:P5087
-    - wikidata:P5086
+    - wikidata:Q5440257
     rank: 1000
     is_a: fips_code
     alias: state_fips_code

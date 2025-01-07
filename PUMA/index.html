@@ -278,6 +278,10 @@
 <td>native</td>
 <td>synthetic_population_schema:PUMA</td>
 </tr>
+<tr>
+<td>exact</td>
+<td>wikidata:Q7257651</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -290,6 +294,8 @@ description: Public Use Microdata Areas (PUMAs) are non-overlapping, statistical
   no fewer than 100,000 people each. They cover the entirety  of the United States,
   Puerto Rico, and Guam.
 from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+exact_mappings:
+- wikidata:Q7257651
 slots:
 - fips_code
 - state_fips_code
@@ -304,6 +310,8 @@ description: Public Use Microdata Areas (PUMAs) are non-overlapping, statistical
   no fewer than 100,000 people each. They cover the entirety  of the United States,
   Puerto Rico, and Guam.
 from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+exact_mappings:
+- wikidata:Q7257651
 attributes:
   fips_code:
     name: fips_code
@@ -329,8 +337,7 @@ attributes:
     description: State FIPS code.
     from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
     exact_mappings:
-    - wikidata:P5087
-    - wikidata:P5086
+    - wikidata:Q5440257
     rank: 1000
     is_a: fips_code
     alias: state_fips_code

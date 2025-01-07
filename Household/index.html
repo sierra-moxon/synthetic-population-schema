@@ -325,6 +325,10 @@
 <td>native</td>
 <td>synthetic_population_schema:Household</td>
 </tr>
+<tr>
+<td>exact</td>
+<td>wikidata:Q259059, OMRSE:00000076</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -334,6 +338,9 @@
 <pre><code class="language-yaml">name: Household
 description: A household entity with associated properties.
 from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+exact_mappings:
+- wikidata:Q259059
+- OMRSE:00000076
 slots:
 - serialno
 - hh_id
@@ -350,6 +357,9 @@ slots:
 <pre><code class="language-yaml">name: Household
 description: A household entity with associated properties.
 from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+exact_mappings:
+- wikidata:Q259059
+- OMRSE:00000076
 attributes:
   serialno:
     name: serialno

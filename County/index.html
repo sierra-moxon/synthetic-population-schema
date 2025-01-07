@@ -301,6 +301,10 @@
 <td>native</td>
 <td>synthetic_population_schema:County</td>
 </tr>
+<tr>
+<td>exact</td>
+<td>wikidata:Q28575, NCIT:C49292</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -310,6 +314,9 @@
 <pre><code class="language-yaml">name: County
 description: A county with associated properties.
 from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+exact_mappings:
+- wikidata:Q28575
+- NCIT:C49292
 slots:
 - name
 - fips_code
@@ -323,6 +330,9 @@ slots:
 <pre><code class="language-yaml">name: County
 description: A county with associated properties.
 from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+exact_mappings:
+- wikidata:Q28575
+- NCIT:C49292
 attributes:
   name:
     name: name
@@ -359,8 +369,7 @@ attributes:
     description: State FIPS code.
     from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
     exact_mappings:
-    - wikidata:P5087
-    - wikidata:P5086
+    - wikidata:Q5440257
     rank: 1000
     is_a: fips_code
     alias: state_fips_code

@@ -301,6 +301,10 @@
 <td>native</td>
 <td>synthetic_population_schema:Tract</td>
 </tr>
+<tr>
+<td>exact</td>
+<td>wikidata:Q107738887, NCIT:C67490</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -313,6 +317,9 @@ description: A census tract is a small, relatively permanent geographic area wit
   containing between 2,500 and 8,000 residents and designed to be as  homogeneous
   as possible in terms of population characteristics and living conditions.
 from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+exact_mappings:
+- wikidata:Q107738887
+- NCIT:C67490
 slots:
 - fips_code
 - state_fips_code
@@ -329,6 +336,9 @@ description: A census tract is a small, relatively permanent geographic area wit
   containing between 2,500 and 8,000 residents and designed to be as  homogeneous
   as possible in terms of population characteristics and living conditions.
 from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+exact_mappings:
+- wikidata:Q107738887
+- NCIT:C67490
 attributes:
   fips_code:
     name: fips_code
@@ -354,8 +364,7 @@ attributes:
     description: State FIPS code.
     from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
     exact_mappings:
-    - wikidata:P5087
-    - wikidata:P5086
+    - wikidata:Q5440257
     rank: 1000
     is_a: fips_code
     alias: state_fips_code
