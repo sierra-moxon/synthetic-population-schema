@@ -243,7 +243,7 @@
 <tr>
 <td><a href="../fips_code/">fips_code</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>FIPS code of the state</td>
+<td>Federal Information Processing Standard code, is a unique numeric identifier ...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -337,8 +337,13 @@ attributes:
     range: string
   fips_code:
     name: fips_code
-    description: FIPS code of the state.
+    description: Federal Information Processing Standard code, is a unique numeric
+      identifier assigned to geographic areas like  states and counties within the
+      United States, used primarily by the Census Bureau to identify locations when  analyzing
+      population data.
     from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+    exact_mappings:
+    - wikidata:Q917824
     rank: 1000
     alias: fips_code
     owner: County
@@ -353,6 +358,9 @@ attributes:
     name: state_fips_code
     description: State FIPS code.
     from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+    exact_mappings:
+    - wikidata:P5087
+    - wikidata:P5086
     rank: 1000
     is_a: fips_code
     alias: state_fips_code

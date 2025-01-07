@@ -200,7 +200,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-blockgroup">Class: BlockGroup</h1>
-<p><em>A block group within a tract.</em></p>
+<p><em>a statistical division within a census tract, typically containing between 600 and 3,000 people,  which is used by the Census Bureau to present demographic data at a smaller, more localized level than  the entire census tract.</em></p>
 <p>URI: <a href="https://w3id.org/sierra-moxon/synthetic-population-schema/BlockGroup">synthetic_population_schema:BlockGroup</a></p>
 <div class="mermaid"> classDiagram
     class BlockGroup
@@ -239,7 +239,7 @@
 <tr>
 <td><a href="../fips_code/">fips_code</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>FIPS code of the state</td>
+<td>Federal Information Processing Standard code, is a unique numeric identifier ...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -316,7 +316,9 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: BlockGroup
-description: A block group within a tract.
+description: a statistical division within a census tract, typically containing between
+  600 and 3,000 people,  which is used by the Census Bureau to present demographic
+  data at a smaller, more localized level than  the entire census tract.
 from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
 slots:
 - fips_code
@@ -330,13 +332,20 @@ slots:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: BlockGroup
-description: A block group within a tract.
+description: a statistical division within a census tract, typically containing between
+  600 and 3,000 people,  which is used by the Census Bureau to present demographic
+  data at a smaller, more localized level than  the entire census tract.
 from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
 attributes:
   fips_code:
     name: fips_code
-    description: FIPS code of the state.
+    description: Federal Information Processing Standard code, is a unique numeric
+      identifier assigned to geographic areas like  states and counties within the
+      United States, used primarily by the Census Bureau to identify locations when  analyzing
+      population data.
     from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+    exact_mappings:
+    - wikidata:Q917824
     rank: 1000
     alias: fips_code
     owner: BlockGroup
@@ -363,6 +372,9 @@ attributes:
     name: state_fips_code
     description: State FIPS code.
     from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+    exact_mappings:
+    - wikidata:P5087
+    - wikidata:P5086
     rank: 1000
     is_a: fips_code
     alias: state_fips_code
@@ -378,6 +390,8 @@ attributes:
     name: county_fips_code
     description: County FIPS code.
     from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+    exact_mappings:
+    - wikidata:P882
     rank: 1000
     is_a: fips_code
     alias: county_fips_code

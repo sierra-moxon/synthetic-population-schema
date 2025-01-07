@@ -351,18 +351,18 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../Tract/">Tract</a></td>
+<td>A census tract is a small, relatively permanent geographic area within a coun...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Person/">Person</a></td>
 <td>A person associated with a household</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../BlockGroup/">BlockGroup</a></td>
-<td>A block group within a tract</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Tract/">Tract</a></td>
-<td>A census tract with properties</td>
+<td>a statistical division within a census tract, typically containing between 60...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -393,6 +393,10 @@
 <td>native</td>
 <td>synthetic_population_schema:county_fips_code</td>
 </tr>
+<tr>
+<td>exact</td>
+<td>wikidata:P882</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -401,6 +405,8 @@
 <pre><code class="language-yaml">name: county_fips_code
 description: County FIPS code.
 from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
+exact_mappings:
+- wikidata:P882
 rank: 1000
 is_a: fips_code
 alias: county_fips_code
