@@ -13,7 +13,6 @@ prefixes:
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/
   schema: http://schema.org/
-  PATO: http://purl.obolibrary.org/obo/PATO_
   example: https://example.org/
 default_prefix: synthetic_population_schema
 default_range: string
@@ -22,75 +21,122 @@ imports:
   - linkml:types
 
 classes:
-
-  NamedThing:
-    description: >-
-      A generic grouping for any identifiable entity
+  State:
+    description: A state with associated properties.
     slots:
-      - id
+      - fips_code
       - name
-      - description
-    class_uri: schema:Thing
+      - abbreviation
+
+  PUMA:
+    description: Public Use Microdata Area with properties.
+    slots:
+      - fips_code
+      - state_fips_code
+
+  County:
+    description: A county with associated properties.
+    slots:
+      - name
+      - fips_code
+      - state_fips_code
+
+  Tract:
+    description: A census tract with properties.
+    slots:
+      - fips_code
+      - state_fips_code
+      - county_fips_code
+
+  BlockGroup:
+    description: A block group within a tract.
+    slots:
+      - fips_code
+      - tract_fips_code
+      - state_fips_code
+      - county_fips_code
+
+  Household:
+    description: A household entity with associated properties.
+    slots:
+      - serialno
+      - hh_id
+      - hh_age
+      - hh_income
+      - hh_race
+      - size
 
   Person:
-    is_a: NamedThing
-    description: >-
-      Represents a Person
+    description: A person associated with a household.
     slots:
-      - primary_email
-      - birth_date
-      - age_in_years
-      - vital_status
-    slot_usage:
-      primary_email:
-        pattern: "^\\S+@[\\S+\\.]+\\S+"
-
-  PersonCollection:
-    tree_root: true
-    description: >-
-      A holder for Person objects
+      - state_fips_code
+      - county_fips_code
+      - tract_fips_code
+      - block_group_fips_code
+      - serialno
+      - hh_id
+      - hh_age
+      - hh_income
+      - hh_race
+      - size
     attributes:
-      entries:
-        range: Person
-        multivalued: true
-        inlined: true
+      sporder:
+        description: Person's order within the household.
+        range: integer
+      relp:
+        description: Relationship to the household head.
+        range: string
+      rac1p:
+        description: Race of the person.
+        range: string
+      agep:
+        description: Age of the person.
+        range: integer
+      sex:
+        description: Gender of the person.
+        range: string
 
 slots:
-  id:
-    identifier: true
-    slot_uri: schema:identifier
-    range: uriorcurie
-    description: A unique identifier for a thing
+  fips_code:
+    description: FIPS code of the state.
+    range: string
+  state_fips_code:
+    is_a: fips_code
+    description: State FIPS code.
+    range: string
+  county_fips_code:
+    is_a: fips_code
+    description: County FIPS code.
+    range: string
+  tract_fips_code:
+    is_a: fips_code
+    description: Tract FIPS code.
+    range: string
+  block_group_fips_code:
+    is_a: fips_code
+    description: Block group FIPS code.
+    range: string
   name:
-    slot_uri: schema:name
-    description: A human-readable name for a thing
-  description:
-    slot_uri: schema:description
-    description: A human-readable description for a thing
-  primary_email:
-    slot_uri: schema:email
-    description: The main email address of a person
-  birth_date:
-    slot_uri: schema:birthDate
-    range: date
-    description: Date on which a person is born
-  age_in_years:
+    description: Name of the entity.
+    range: string
+  abbreviation:
+    description: Abbreviation of the entity.
+    range: string
+  serialno:
+    description: Serial number of the entity.
+    range: string
+  hh_id:
+    description: Household ID associated with the entity.
+    range: string
+  hh_age:
+    description: Age of the household head (copied for reference).
     range: integer
-    description: Number of years since birth
-  vital_status:
-    range: PersonStatus
-    description: living or dead status
-
-enums:
-  PersonStatus:
-    permissible_values:
-      ALIVE:
-        description: the person is living
-        meaning: PATO:0001421
-      DEAD:
-        description: the person is deceased
-        meaning: PATO:0001422
-      UNKNOWN:
-        description: the vital status is not known
-        todos:
-          - map this to an ontology
+  hh_income:
+    description: Income of the household (copied for reference).
+    range: float
+  hh_race:
+    description: Race of the household (copied for reference).
+    range: string
+  size:
+    description: Size of the household (copied for reference).
+    range: integer
