@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://sierra-moxon.github.io/synthetic-population-schema/vital_status/">
+        <link rel="canonical" href="https://sierra-moxon.github.io/synthetic-population-schema/county_fips_code/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: vital_status - synthetic-population-schema</title>
+        <title>Slot: county_fips_code - synthetic-population-schema</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-vital_status" class="md-skip">
+        <a href="#slot-county_fips_code" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: vital_status
+              Slot: county_fips_code
             
           </span>
         </div>
@@ -256,6 +256,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#inheritance" class="md-nav__link">
+    Inheritance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     Applicable Classes
   </a>
@@ -317,17 +324,22 @@
                 
                   
 
-  <a href="https://github.com/sierra-moxon/synthetic-population-schema/edit/master/docs/vital_status.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/sierra-moxon/synthetic-population-schema/edit/master/docs/county_fips_code.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-vital_status">Slot: vital_status</h1>
-<p><em>living or dead status</em></p>
-<p>URI: <a href="https://w3id.org/sierra-moxon/synthetic-population-schema/vital_status">synthetic_population_schema:vital_status</a></p>
-<!-- no inheritance hierarchy -->
-
+<h1 id="slot-county_fips_code">Slot: county_fips_code</h1>
+<p><em>County FIPS code.</em></p>
+<p>URI: <a href="https://w3id.org/sierra-moxon/synthetic-population-schema/county_fips_code">synthetic_population_schema:county_fips_code</a></p>
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../fips_code/">fips_code</a><ul>
+<li><strong>county_fips_code</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -339,15 +351,25 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../Tract/">Tract</a></td>
+<td>A census tract with properties</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Person/">Person</a></td>
-<td>Represents a Person</td>
+<td>A person associated with a household</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../BlockGroup/">BlockGroup</a></td>
+<td>A block group within a tract</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../PersonStatus/">PersonStatus</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -365,25 +387,28 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>synthetic_population_schema:vital_status</td>
+<td>synthetic_population_schema:county_fips_code</td>
 </tr>
 <tr>
 <td>native</td>
-<td>synthetic_population_schema:vital_status</td>
+<td>synthetic_population_schema:county_fips_code</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: vital_status
-description: living or dead status
+<pre><code class="language-yaml">name: county_fips_code
+description: County FIPS code.
 from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
 rank: 1000
-alias: vital_status
+is_a: fips_code
+alias: county_fips_code
 domain_of:
+- Tract
+- BlockGroup
 - Person
-range: PersonStatus
+range: string
 
 </code></pre>
 

@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://sierra-moxon.github.io/synthetic-population-schema/age_in_years/">
+        <link rel="canonical" href="https://sierra-moxon.github.io/synthetic-population-schema/hh_age/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: age_in_years - synthetic-population-schema</title>
+        <title>Slot: hh_age - synthetic-population-schema</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-age_in_years" class="md-skip">
+        <a href="#slot-hh_age" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: age_in_years
+              Slot: hh_age
             
           </span>
         </div>
@@ -317,15 +317,15 @@
                 
                   
 
-  <a href="https://github.com/sierra-moxon/synthetic-population-schema/edit/master/docs/age_in_years.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/sierra-moxon/synthetic-population-schema/edit/master/docs/hh_age.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-age_in_years">Slot: age_in_years</h1>
-<p><em>Number of years since birth</em></p>
-<p>URI: <a href="https://w3id.org/sierra-moxon/synthetic-population-schema/age_in_years">synthetic_population_schema:age_in_years</a></p>
+<h1 id="slot-hh_age">Slot: hh_age</h1>
+<p><em>Age of the household head (copied for reference).</em></p>
+<p>URI: <a href="https://w3id.org/sierra-moxon/synthetic-population-schema/hh_age">synthetic_population_schema:hh_age</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -339,8 +339,13 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../Household/">Household</a></td>
+<td>A household entity with associated properties</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Person/">Person</a></td>
-<td>Represents a Person</td>
+<td>A person associated with a household</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -365,23 +370,24 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>synthetic_population_schema:age_in_years</td>
+<td>synthetic_population_schema:hh_age</td>
 </tr>
 <tr>
 <td>native</td>
-<td>synthetic_population_schema:age_in_years</td>
+<td>synthetic_population_schema:hh_age</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: age_in_years
-description: Number of years since birth
+<pre><code class="language-yaml">name: hh_age
+description: Age of the household head (copied for reference).
 from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
 rank: 1000
-alias: age_in_years
+alias: hh_age
 domain_of:
+- Household
 - Person
 range: integer
 

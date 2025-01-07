@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://sierra-moxon.github.io/synthetic-population-schema/Person/" rel="canonical"/>
+<link href="https://sierra-moxon.github.io/synthetic-population-schema/Household/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: Person - synthetic-population-schema</title>
+<title>Class: Household - synthetic-population-schema</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-person">
+<a class="md-skip" href="#class-household">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: Person
+              Class: Household
             
           </span>
 </div>
@@ -191,44 +191,26 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/sierra-moxon/synthetic-population-schema/edit/master/docs/Person.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/sierra-moxon/synthetic-population-schema/edit/master/docs/Household.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-person">Class: Person</h1>
-<p><em>A person associated with a household.</em></p>
-<p>URI: <a href="https://w3id.org/sierra-moxon/synthetic-population-schema/Person">synthetic_population_schema:Person</a></p>
+<h1 id="class-household">Class: Household</h1>
+<p><em>A household entity with associated properties.</em></p>
+<p>URI: <a href="https://w3id.org/sierra-moxon/synthetic-population-schema/Household">synthetic_population_schema:Household</a></p>
 <div class="mermaid"> classDiagram
-    class Person
-    click Person href "../Person"
-      Person : agep
+    class Household
+    click Household href "../Household"
+      Household : hh_age
 
-      Person : block_group_fips_code
+      Household : hh_id
 
-      Person : county_fips_code
+      Household : hh_income
 
-      Person : hh_age
+      Household : hh_race
 
-      Person : hh_id
+      Household : serialno
 
-      Person : hh_income
-
-      Person : hh_race
-
-      Person : rac1p
-
-      Person : relp
-
-      Person : serialno
-
-      Person : sex
-
-      Person : size
-
-      Person : sporder
-
-      Person : state_fips_code
-
-      Person : tract_fips_code
+      Household : size
 
 
 </div>
@@ -244,30 +226,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="../state_fips_code/">state_fips_code</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>State FIPS code</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../county_fips_code/">county_fips_code</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>County FIPS code</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../tract_fips_code/">tract_fips_code</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Tract FIPS code</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../block_group_fips_code/">block_group_fips_code</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Block group FIPS code</td>
-<td>direct</td>
-</tr>
 <tr>
 <td><a href="../serialno/">serialno</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
@@ -304,36 +262,6 @@
 <td>Size of the household (copied for reference)</td>
 <td>direct</td>
 </tr>
-<tr>
-<td><a href="../sporder/">sporder</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Person's order within the household</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../relp/">relp</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Relationship to the household head</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../rac1p/">rac1p</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Race of the person</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../agep/">agep</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Age of the person</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../sex/">sex</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Gender of the person</td>
-<td>direct</td>
-</tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -352,11 +280,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>synthetic_population_schema:Person</td>
+<td>synthetic_population_schema:Household</td>
 </tr>
 <tr>
 <td>native</td>
-<td>synthetic_population_schema:Person</td>
+<td>synthetic_population_schema:Household</td>
 </tr>
 </tbody>
 </table>
@@ -364,178 +292,32 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: Person
-description: A person associated with a household.
+<pre><code class="language-yaml">name: Household
+description: A household entity with associated properties.
 from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
 slots:
-- state_fips_code
-- county_fips_code
-- tract_fips_code
-- block_group_fips_code
 - serialno
 - hh_id
 - hh_age
 - hh_income
 - hh_race
 - size
-attributes:
-  sporder:
-    name: sporder
-    description: Person's order within the household.
-    from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
-    rank: 1000
-    domain_of:
-    - Person
-    range: integer
-  relp:
-    name: relp
-    description: Relationship to the household head.
-    from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
-    rank: 1000
-    domain_of:
-    - Person
-    range: string
-  rac1p:
-    name: rac1p
-    description: Race of the person.
-    from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
-    rank: 1000
-    domain_of:
-    - Person
-    range: string
-  agep:
-    name: agep
-    description: Age of the person.
-    from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
-    rank: 1000
-    domain_of:
-    - Person
-    range: integer
-  sex:
-    name: sex
-    description: Gender of the person.
-    from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
-    rank: 1000
-    domain_of:
-    - Person
-    range: string
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: Person
-description: A person associated with a household.
+<pre><code class="language-yaml">name: Household
+description: A household entity with associated properties.
 from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
 attributes:
-  sporder:
-    name: sporder
-    description: Person's order within the household.
-    from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
-    rank: 1000
-    alias: sporder
-    owner: Person
-    domain_of:
-    - Person
-    range: integer
-  relp:
-    name: relp
-    description: Relationship to the household head.
-    from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
-    rank: 1000
-    alias: relp
-    owner: Person
-    domain_of:
-    - Person
-    range: string
-  rac1p:
-    name: rac1p
-    description: Race of the person.
-    from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
-    rank: 1000
-    alias: rac1p
-    owner: Person
-    domain_of:
-    - Person
-    range: string
-  agep:
-    name: agep
-    description: Age of the person.
-    from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
-    rank: 1000
-    alias: agep
-    owner: Person
-    domain_of:
-    - Person
-    range: integer
-  sex:
-    name: sex
-    description: Gender of the person.
-    from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
-    rank: 1000
-    alias: sex
-    owner: Person
-    domain_of:
-    - Person
-    range: string
-  state_fips_code:
-    name: state_fips_code
-    description: State FIPS code.
-    from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
-    rank: 1000
-    is_a: fips_code
-    alias: state_fips_code
-    owner: Person
-    domain_of:
-    - PUMA
-    - County
-    - Tract
-    - BlockGroup
-    - Person
-    range: string
-  county_fips_code:
-    name: county_fips_code
-    description: County FIPS code.
-    from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
-    rank: 1000
-    is_a: fips_code
-    alias: county_fips_code
-    owner: Person
-    domain_of:
-    - Tract
-    - BlockGroup
-    - Person
-    range: string
-  tract_fips_code:
-    name: tract_fips_code
-    description: Tract FIPS code.
-    from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
-    rank: 1000
-    is_a: fips_code
-    alias: tract_fips_code
-    owner: Person
-    domain_of:
-    - BlockGroup
-    - Person
-    range: string
-  block_group_fips_code:
-    name: block_group_fips_code
-    description: Block group FIPS code.
-    from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
-    rank: 1000
-    is_a: fips_code
-    alias: block_group_fips_code
-    owner: Person
-    domain_of:
-    - Person
-    range: string
   serialno:
     name: serialno
     description: Serial number of the entity.
     from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
     rank: 1000
     alias: serialno
-    owner: Person
+    owner: Household
     domain_of:
     - Household
     - Person
@@ -546,7 +328,7 @@ attributes:
     from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
     rank: 1000
     alias: hh_id
-    owner: Person
+    owner: Household
     domain_of:
     - Household
     - Person
@@ -557,7 +339,7 @@ attributes:
     from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
     rank: 1000
     alias: hh_age
-    owner: Person
+    owner: Household
     domain_of:
     - Household
     - Person
@@ -568,7 +350,7 @@ attributes:
     from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
     rank: 1000
     alias: hh_income
-    owner: Person
+    owner: Household
     domain_of:
     - Household
     - Person
@@ -579,7 +361,7 @@ attributes:
     from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
     rank: 1000
     alias: hh_race
-    owner: Person
+    owner: Household
     domain_of:
     - Household
     - Person
@@ -590,7 +372,7 @@ attributes:
     from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
     rank: 1000
     alias: size
-    owner: Person
+    owner: Household
     domain_of:
     - Household
     - Person
