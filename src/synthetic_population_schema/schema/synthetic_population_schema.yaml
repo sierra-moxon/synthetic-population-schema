@@ -15,6 +15,8 @@ prefixes:
   schema: http://schema.org/
   example: https://example.org/
   wikidata: http://www.wikidata.org/entity/
+  OMRSE: http://purl.obolibrary.org/obo/OMRSE_
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
 default_prefix: synthetic_population_schema
 default_range: string
 
@@ -30,6 +32,8 @@ classes:
       - abbreviation
       - counties
       - pumas
+    exact_mappings:
+      - wikidata:Q7275
 
   PUMA:
     description: >-
@@ -39,6 +43,8 @@ classes:
     slots:
       - fips_code
       - state_fips_code
+    exact_mappings:
+      - wikidata:Q7257651
 
   County:
     description: A county with associated properties.
@@ -47,6 +53,9 @@ classes:
       - fips_code
       - state_fips_code
       - tracts
+    exact_mappings:
+      - wikidata:Q28575
+      - NCIT:C49292
 
   Tract:
     description: >-
@@ -58,6 +67,9 @@ classes:
       - state_fips_code
       - county_fips_code
       - block_groups
+    exact_mappings:
+      - wikidata:Q107738887
+      - NCIT:C67490
 
   BlockGroup:
     description: >-
@@ -70,6 +82,8 @@ classes:
       - state_fips_code
       - county_fips_code
       - households
+    exact_mappings:
+      - wikidata:Q5058963
 
   Household:
     description: A household entity with associated properties.
@@ -81,6 +95,9 @@ classes:
       - hh_race
       - size
       - persons
+    exact_mappings:
+      - wikidata:Q259059
+      - OMRSE:00000076
 
   Person:
     description: A person associated with a household.
@@ -150,8 +167,7 @@ slots:
     description: State FIPS code.
     range: string
     exact_mappings:
-      - wikidata:P5087
-      - wikidata:P5086
+      - wikidata:Q5440257
   county_fips_code:
     is_a: fips_code
     description: County FIPS code.
