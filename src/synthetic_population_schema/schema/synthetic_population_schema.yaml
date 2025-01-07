@@ -14,6 +14,7 @@ prefixes:
   biolink: https://w3id.org/biolink/
   schema: http://schema.org/
   example: https://example.org/
+  wikidata: http://www.wikidata.org/entity/
 default_prefix: synthetic_population_schema
 default_range: string
 
@@ -31,7 +32,10 @@ classes:
       - pumas
 
   PUMA:
-    description: Public Use Microdata Area with properties.
+    description: >-
+      Public Use Microdata Areas (PUMAs) are non-overlapping, statistical geographic areas that partition each state 
+      or equivalent entity into geographic areas containing no fewer than 100,000 people each. They cover the entirety 
+      of the United States, Puerto Rico, and Guam.
     slots:
       - fips_code
       - state_fips_code
@@ -45,7 +49,10 @@ classes:
       - tracts
 
   Tract:
-    description: A census tract with properties.
+    description: >-
+      A census tract is a small, relatively permanent geographic area within a county, used to collect and present 
+      demographic data from the census, usually containing between 2,500 and 8,000 residents and designed to be as 
+      homogeneous as possible in terms of population characteristics and living conditions.
     slots:
       - fips_code
       - state_fips_code
@@ -53,7 +60,10 @@ classes:
       - block_groups
 
   BlockGroup:
-    description: A block group within a tract.
+    description: >-
+      a statistical division within a census tract, typically containing between 600 and 3,000 people, 
+      which is used by the Census Bureau to present demographic data at a smaller, more localized level than 
+      the entire census tract.
     slots:
       - fips_code
       - tract_fips_code
@@ -128,16 +138,26 @@ slots:
     multivalued: true
     description: Public Use Microdata Areas within the state.
   fips_code:
-    description: FIPS code of the state.
+    description: >-
+      Federal Information Processing Standard code, is a unique numeric identifier assigned to geographic areas like 
+      states and counties within the United States, used primarily by the Census Bureau to identify locations when 
+      analyzing population data.
     range: string
+    exact_mappings:
+      - wikidata:Q917824
   state_fips_code:
     is_a: fips_code
     description: State FIPS code.
     range: string
+    exact_mappings:
+      - wikidata:P5087
+      - wikidata:P5086
   county_fips_code:
     is_a: fips_code
     description: County FIPS code.
     range: string
+    exact_mappings:
+      - wikidata:P882
   tract_fips_code:
     is_a: fips_code
     description: Tract FIPS code.
