@@ -1,20 +1,20 @@
 # Configuration of generators (defaults illustrated)
 ---
 generator_args:
+  jsonschema: {}
   owl:
     mergeimports: true
     metaclasses: true
     type_objects: true
-    # throws 'Cannot handle metadata profile: rdfs'
-    # metadata_profile: rdfs
-  markdown:
-    mergeimports: true
-  jsonschema:
-    mergeimports: true
-  jsonldcontext:
-    mergeimports: true
-  python:
-    mergeimports: true
-  prefixmap:
-    mergeimports: true
+  includes:
+    - jsonschema
+    - python
+    - owl
+    - shex
+    - shacl
+    - prefixmap
+  excludes:
+    - graphql
+    - sqlschema
+    - protobuf
 ...
