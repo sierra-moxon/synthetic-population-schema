@@ -27,6 +27,8 @@ classes:
       - fips_code
       - name
       - abbreviation
+      - counties
+      - pumas
 
   PUMA:
     description: Public Use Microdata Area with properties.
@@ -40,6 +42,7 @@ classes:
       - name
       - fips_code
       - state_fips_code
+      - tracts
 
   Tract:
     description: A census tract with properties.
@@ -47,6 +50,7 @@ classes:
       - fips_code
       - state_fips_code
       - county_fips_code
+      - block_groups
 
   BlockGroup:
     description: A block group within a tract.
@@ -55,6 +59,7 @@ classes:
       - tract_fips_code
       - state_fips_code
       - county_fips_code
+      - households
 
   Household:
     description: A household entity with associated properties.
@@ -65,6 +70,7 @@ classes:
       - hh_income
       - hh_race
       - size
+      - persons
 
   Person:
     description: A person associated with a household.
@@ -97,6 +103,30 @@ classes:
         range: string
 
 slots:
+  counties:
+    range: County
+    multivalued: true
+    description: Counties within the state.
+  tracts:
+    range: Tract
+    multivalued: true
+    description: Tracts within the county.
+  block_groups:
+    range: BlockGroup
+    multivalued: true
+    description: Block groups within the tract.
+  households:
+    range: Household
+    multivalued: true
+    description: Households within the block group.
+  persons:
+    range: Person
+    multivalued: true
+    description: Persons within the household.
+  pumas:
+    range: PUMA
+    multivalued: true
+    description: Public Use Microdata Areas within the state.
   fips_code:
     description: FIPS code of the state.
     range: string
