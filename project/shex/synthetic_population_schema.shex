@@ -3,7 +3,6 @@ BASE <https://w3id.org/sierra-moxon/synthetic-population-schema/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
-PREFIX schema1: <http://schema.org/>
 
 
 linkml:String xsd:string
@@ -44,32 +43,87 @@ linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
 
-<NamedThing>  (
-    CLOSED {
-       (  $<NamedThing_tes> (  schema1:name @linkml:String ? ;
-             schema1:description @linkml:String ?
-          ) ;
-          rdf:type [ schema1:Thing ]
-       )
-    } OR @<Person>
-)
-
-<Person> CLOSED {
-    (  $<Person_tes> (  &<NamedThing_tes> ;
-          rdf:type [ schema1:Thing ] ? ;
-          schema1:email @linkml:String ? ;
-          schema1:birthDate @linkml:Date ? ;
-          <age_in_years> @linkml:Integer ? ;
-          <vital_status> [ <http://purl.obolibrary.org/obo/PATO_0001421> <http://purl.obolibrary.org/obo/PATO_0001422>
-             <https://w3id.org/sierra-moxon/synthetic-population-schema/PersonStatus#UNKNOWN> ] ?
+<BlockGroup> CLOSED {
+    (  $<BlockGroup_tes> (  <fips_code> @linkml:String ? ;
+          <tract_fips_code> @linkml:String ? ;
+          <state_fips_code> @linkml:String ? ;
+          <county_fips_code> @linkml:String ? ;
+          <households> @<Household> *
        ) ;
-       rdf:type [ <Person> ]
+       rdf:type [ <BlockGroup> ] ?
     )
 }
 
-<PersonCollection> CLOSED {
-    (  $<PersonCollection_tes> <entries> @<Person> * ;
-       rdf:type [ <PersonCollection> ] ?
+<County> CLOSED {
+    (  $<County_tes> (  <name> @linkml:String ? ;
+          <fips_code> @linkml:String ? ;
+          <state_fips_code> @linkml:String ? ;
+          <tracts> @<Tract> *
+       ) ;
+       rdf:type [ <County> ] ?
+    )
+}
+
+<Household> CLOSED {
+    (  $<Household_tes> (  <serialno> @linkml:String ? ;
+          <hh_id> @linkml:String ? ;
+          <hh_age> @linkml:Integer ? ;
+          <hh_income> @linkml:Float ? ;
+          <hh_race> @linkml:String ? ;
+          <size> @linkml:Integer ? ;
+          <persons> @<Person> *
+       ) ;
+       rdf:type [ <Household> ] ?
+    )
+}
+
+<Person> CLOSED {
+    (  $<Person_tes> (  <state_fips_code> @linkml:String ? ;
+          <county_fips_code> @linkml:String ? ;
+          <tract_fips_code> @linkml:String ? ;
+          <block_group_fips_code> @linkml:String ? ;
+          <serialno> @linkml:String ? ;
+          <hh_id> @linkml:String ? ;
+          <hh_age> @linkml:Integer ? ;
+          <hh_income> @linkml:Float ? ;
+          <hh_race> @linkml:String ? ;
+          <size> @linkml:Integer ? ;
+          <sporder> @linkml:Integer ? ;
+          <relp> @linkml:String ? ;
+          <rac1p> @linkml:String ? ;
+          <agep> @linkml:Integer ? ;
+          <sex> @linkml:String ?
+       ) ;
+       rdf:type [ <Person> ] ?
+    )
+}
+
+<PUMA> CLOSED {
+    (  $<PUMA_tes> (  <fips_code> @linkml:String ? ;
+          <state_fips_code> @linkml:String ?
+       ) ;
+       rdf:type [ <PUMA> ] ?
+    )
+}
+
+<State> CLOSED {
+    (  $<State_tes> (  <fips_code> @linkml:String ? ;
+          <name> @linkml:String ? ;
+          <abbreviation> @linkml:String ? ;
+          <counties> @<County> * ;
+          <pumas> @<PUMA> *
+       ) ;
+       rdf:type [ <State> ] ?
+    )
+}
+
+<Tract> CLOSED {
+    (  $<Tract_tes> (  <fips_code> @linkml:String ? ;
+          <state_fips_code> @linkml:String ? ;
+          <county_fips_code> @linkml:String ? ;
+          <block_groups> @<BlockGroup> *
+       ) ;
+       rdf:type [ <Tract> ] ?
     )
 }
 

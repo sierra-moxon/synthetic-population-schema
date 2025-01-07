@@ -28,12 +28,20 @@
       "prefix_reference": "http://schema.org/"
     },
     {
-      "prefix_prefix": "PATO",
-      "prefix_reference": "http://purl.obolibrary.org/obo/PATO_"
-    },
-    {
       "prefix_prefix": "example",
       "prefix_reference": "https://example.org/"
+    },
+    {
+      "prefix_prefix": "wikidata",
+      "prefix_reference": "http://www.wikidata.org/entity/"
+    },
+    {
+      "prefix_prefix": "OMRSE",
+      "prefix_reference": "http://purl.obolibrary.org/obo/OMRSE_"
+    },
+    {
+      "prefix_prefix": "NCIT",
+      "prefix_reference": "http://purl.obolibrary.org/obo/NCIT_"
     }
   ],
   "default_prefix": "synthetic_population_schema",
@@ -348,121 +356,303 @@
       "@type": "TypeDefinition"
     }
   ],
-  "enums": [
-    {
-      "name": "PersonStatus",
-      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/PersonStatus",
-      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
-      "permissible_values": [
-        {
-          "text": "ALIVE",
-          "description": "the person is living",
-          "meaning": "PATO:0001421"
-        },
-        {
-          "text": "DEAD",
-          "description": "the person is deceased",
-          "meaning": "PATO:0001422"
-        },
-        {
-          "text": "UNKNOWN",
-          "description": "the vital status is not known",
-          "todos": [
-            "map this to an ontology"
-          ]
-        }
-      ]
-    }
-  ],
   "slots": [
     {
-      "name": "id",
-      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/id",
-      "description": "A unique identifier for a thing",
+      "name": "counties",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/counties",
+      "description": "Counties within the state.",
       "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
-      "mappings": [
-        "http://schema.org/identifier"
-      ],
-      "slot_uri": "http://schema.org/identifier",
-      "identifier": true,
-      "owner": "NamedThing",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/counties",
+      "owner": "State",
       "domain_of": [
-        "NamedThing"
+        "State"
       ],
-      "range": "uriorcurie",
-      "required": true,
+      "range": "County",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "tracts",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/tracts",
+      "description": "Tracts within the county.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/tracts",
+      "owner": "County",
+      "domain_of": [
+        "County"
+      ],
+      "range": "Tract",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "block_groups",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/block_groups",
+      "description": "Block groups within the tract.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/block_groups",
+      "owner": "Tract",
+      "domain_of": [
+        "Tract"
+      ],
+      "range": "BlockGroup",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "households",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/households",
+      "description": "Households within the block group.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/households",
+      "owner": "BlockGroup",
+      "domain_of": [
+        "BlockGroup"
+      ],
+      "range": "Household",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "persons",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/persons",
+      "description": "Persons within the household.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/persons",
+      "owner": "Household",
+      "domain_of": [
+        "Household"
+      ],
+      "range": "Person",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "pumas",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/pumas",
+      "description": "Public Use Microdata Areas within the state.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/pumas",
+      "owner": "State",
+      "domain_of": [
+        "State"
+      ],
+      "range": "PUMA",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fips_code",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/fips_code",
+      "description": "Federal Information Processing Standard code, is a unique numeric identifier assigned to geographic areas like  states and counties within the United States, used primarily by the Census Bureau to identify locations when  analyzing population data.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "exact_mappings": [
+        "http://www.wikidata.org/entity/Q917824"
+      ],
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/fips_code",
+      "owner": "BlockGroup",
+      "domain_of": [
+        "State",
+        "PUMA",
+        "County",
+        "Tract",
+        "BlockGroup"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "state_fips_code",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/state_fips_code",
+      "description": "State FIPS code.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "exact_mappings": [
+        "http://www.wikidata.org/entity/Q5440257"
+      ],
+      "is_a": "fips_code",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/state_fips_code",
+      "owner": "Person",
+      "domain_of": [
+        "PUMA",
+        "County",
+        "Tract",
+        "BlockGroup",
+        "Person"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "county_fips_code",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/county_fips_code",
+      "description": "County FIPS code.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "exact_mappings": [
+        "http://www.wikidata.org/entity/P882"
+      ],
+      "is_a": "fips_code",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/county_fips_code",
+      "owner": "Person",
+      "domain_of": [
+        "Tract",
+        "BlockGroup",
+        "Person"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "tract_fips_code",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/tract_fips_code",
+      "description": "Tract FIPS code.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "is_a": "fips_code",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/tract_fips_code",
+      "owner": "Person",
+      "domain_of": [
+        "BlockGroup",
+        "Person"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "block_group_fips_code",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/block_group_fips_code",
+      "description": "Block group FIPS code.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "is_a": "fips_code",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/block_group_fips_code",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
       "name": "name",
       "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/name",
-      "description": "A human-readable name for a thing",
+      "description": "Name of the entity.",
       "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
-      "mappings": [
-        "http://schema.org/name"
-      ],
-      "slot_uri": "http://schema.org/name",
-      "owner": "NamedThing",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/name",
+      "owner": "County",
       "domain_of": [
-        "NamedThing"
+        "State",
+        "County"
       ],
       "range": "string",
       "@type": "SlotDefinition"
     },
     {
-      "name": "description",
-      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/description",
-      "description": "A human-readable description for a thing",
+      "name": "abbreviation",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/abbreviation",
+      "description": "Abbreviation of the entity.",
       "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
-      "mappings": [
-        "http://schema.org/description"
-      ],
-      "slot_uri": "http://schema.org/description",
-      "owner": "NamedThing",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/abbreviation",
+      "owner": "State",
       "domain_of": [
-        "NamedThing"
+        "State"
       ],
       "range": "string",
       "@type": "SlotDefinition"
     },
     {
-      "name": "primary_email",
-      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/primary_email",
-      "description": "The main email address of a person",
+      "name": "serialno",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/serialno",
+      "description": "Serial number of the entity.",
       "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
-      "mappings": [
-        "http://schema.org/email"
-      ],
-      "slot_uri": "http://schema.org/email",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/serialno",
       "owner": "Person",
       "domain_of": [
+        "Household",
         "Person"
       ],
       "range": "string",
       "@type": "SlotDefinition"
     },
     {
-      "name": "birth_date",
-      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/birth_date",
-      "description": "Date on which a person is born",
+      "name": "hh_id",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/hh_id",
+      "description": "Household ID associated with the entity.",
       "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
-      "mappings": [
-        "http://schema.org/birthDate"
-      ],
-      "slot_uri": "http://schema.org/birthDate",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/hh_id",
       "owner": "Person",
       "domain_of": [
+        "Household",
         "Person"
       ],
-      "range": "date",
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
-      "name": "age_in_years",
-      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/age_in_years",
-      "description": "Number of years since birth",
+      "name": "hh_age",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/hh_age",
+      "description": "Age of the household head (copied for reference).",
       "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
-      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/age_in_years",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/hh_age",
+      "owner": "Person",
+      "domain_of": [
+        "Household",
+        "Person"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "hh_income",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/hh_income",
+      "description": "Income of the household (copied for reference).",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/hh_income",
+      "owner": "Person",
+      "domain_of": [
+        "Household",
+        "Person"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "hh_race",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/hh_race",
+      "description": "Race of the household (copied for reference).",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/hh_race",
+      "owner": "Person",
+      "domain_of": [
+        "Household",
+        "Person"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "size",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/size",
+      "description": "Size of the household (copied for reference).",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/size",
+      "owner": "Person",
+      "domain_of": [
+        "Household",
+        "Person"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "person__sporder",
+      "description": "Person's order within the household.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/sporder",
+      "alias": "sporder",
       "owner": "Person",
       "domain_of": [
         "Person"
@@ -471,120 +661,237 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "vital_status",
-      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/vital_status",
-      "description": "living or dead status",
+      "name": "person__relp",
+      "description": "Relationship to the household head.",
       "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
-      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/vital_status",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/relp",
+      "alias": "relp",
       "owner": "Person",
       "domain_of": [
         "Person"
       ],
-      "range": "PersonStatus",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "personCollection__entries",
-      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
-      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/entries",
-      "alias": "entries",
-      "owner": "PersonCollection",
-      "domain_of": [
-        "PersonCollection"
-      ],
-      "range": "Person",
-      "multivalued": true,
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Person_primary_email",
-      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/primary_email",
-      "description": "The main email address of a person",
-      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
-      "mappings": [
-        "http://schema.org/email"
-      ],
-      "is_a": "primary_email",
-      "domain": "Person",
-      "slot_uri": "http://schema.org/email",
-      "alias": "primary_email",
-      "owner": "Person",
-      "domain_of": [
-        "Person"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "primary_email",
       "range": "string",
-      "pattern": "^\\S+@[\\S+\\.]+\\S+",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "person__rac1p",
+      "description": "Race of the person.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/rac1p",
+      "alias": "rac1p",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "person__agep",
+      "description": "Age of the person.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/agep",
+      "alias": "agep",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "person__sex",
+      "description": "Gender of the person.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "slot_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/sex",
+      "alias": "sex",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     }
   ],
   "classes": [
     {
-      "name": "NamedThing",
-      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/NamedThing",
-      "description": "A generic grouping for any identifiable entity",
+      "name": "State",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/State",
+      "description": "A state with associated properties.",
       "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
-      "mappings": [
-        "schema:Thing"
+      "exact_mappings": [
+        "wikidata:Q7275"
       ],
       "slots": [
-        "id",
+        "fips_code",
         "name",
-        "description"
+        "abbreviation",
+        "counties",
+        "pumas"
       ],
       "slot_usage": {},
-      "class_uri": "http://schema.org/Thing",
+      "class_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/State",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "PUMA",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/PUMA",
+      "description": "Public Use Microdata Areas (PUMAs) are non-overlapping, statistical geographic areas that partition each state  or equivalent entity into geographic areas containing no fewer than 100,000 people each. They cover the entirety  of the United States, Puerto Rico, and Guam.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "exact_mappings": [
+        "wikidata:Q7257651"
+      ],
+      "slots": [
+        "fips_code",
+        "state_fips_code"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/PUMA",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "County",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/County",
+      "description": "A county with associated properties.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "exact_mappings": [
+        "wikidata:Q28575",
+        "NCIT:C49292"
+      ],
+      "slots": [
+        "name",
+        "fips_code",
+        "state_fips_code",
+        "tracts"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/County",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Tract",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/Tract",
+      "description": "A census tract is a small, relatively permanent geographic area within a county, used to collect and present  demographic data from the census, usually containing between 2,500 and 8,000 residents and designed to be as  homogeneous as possible in terms of population characteristics and living conditions.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "exact_mappings": [
+        "wikidata:Q107738887",
+        "NCIT:C67490"
+      ],
+      "slots": [
+        "fips_code",
+        "state_fips_code",
+        "county_fips_code",
+        "block_groups"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/Tract",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "BlockGroup",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/BlockGroup",
+      "description": "a statistical division within a census tract, typically containing between 600 and 3,000 people,  which is used by the Census Bureau to present demographic data at a smaller, more localized level than  the entire census tract.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "exact_mappings": [
+        "wikidata:Q5058963"
+      ],
+      "slots": [
+        "fips_code",
+        "tract_fips_code",
+        "state_fips_code",
+        "county_fips_code",
+        "households"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/BlockGroup",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Household",
+      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/Household",
+      "description": "A household entity with associated properties.",
+      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
+      "exact_mappings": [
+        "wikidata:Q259059",
+        "OMRSE:00000076"
+      ],
+      "slots": [
+        "serialno",
+        "hh_id",
+        "hh_age",
+        "hh_income",
+        "hh_race",
+        "size",
+        "persons"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/Household",
       "@type": "ClassDefinition"
     },
     {
       "name": "Person",
       "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/Person",
-      "description": "Represents a Person",
-      "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
-      "is_a": "NamedThing",
-      "slots": [
-        "id",
-        "name",
-        "description",
-        "Person_primary_email",
-        "birth_date",
-        "age_in_years",
-        "vital_status"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/Person",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "PersonCollection",
-      "definition_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/PersonCollection",
-      "description": "A holder for Person objects",
+      "description": "A person associated with a household.",
       "from_schema": "https://w3id.org/sierra-moxon/synthetic-population-schema",
       "slots": [
-        "personCollection__entries"
+        "state_fips_code",
+        "county_fips_code",
+        "tract_fips_code",
+        "block_group_fips_code",
+        "serialno",
+        "hh_id",
+        "hh_age",
+        "hh_income",
+        "hh_race",
+        "size",
+        "person__sporder",
+        "person__relp",
+        "person__rac1p",
+        "person__agep",
+        "person__sex"
       ],
       "slot_usage": {},
       "attributes": [
         {
-          "name": "entries",
-          "range": "Person",
-          "multivalued": true,
-          "inlined": true,
+          "name": "sporder",
+          "description": "Person's order within the household.",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "relp",
+          "description": "Relationship to the household head.",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "rac1p",
+          "description": "Race of the person.",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "agep",
+          "description": "Age of the person.",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sex",
+          "description": "Gender of the person.",
+          "range": "string",
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/PersonCollection",
-      "tree_root": true,
+      "class_uri": "https://w3id.org/sierra-moxon/synthetic-population-schema/Person",
       "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "synthetic_population_schema.yaml",
-  "source_file_date": "2025-01-07T11:04:22",
-  "source_file_size": 2429,
-  "generation_date": "2025-01-07T11:05:03",
+  "source_file_date": "2025-01-07T12:24:26",
+  "source_file_size": 5762,
+  "generation_date": "2025-01-07T12:26:28",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/synthetic_population_schema.context.jsonld",

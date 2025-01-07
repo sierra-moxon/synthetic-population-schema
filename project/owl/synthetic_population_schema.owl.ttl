@@ -1,177 +1,594 @@
-@prefix PATO: <http://purl.obolibrary.org/obo/PATO_> .
+@prefix NCIT: <http://purl.obolibrary.org/obo/NCIT_> .
+@prefix OMRSE: <http://purl.obolibrary.org/obo/OMRSE_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix linkml: <https://w3id.org/linkml/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema1: <http://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix synthetic_population_schema: <https://w3id.org/sierra-moxon/synthetic-population-schema/> .
+@prefix wikidata: <http://www.wikidata.org/entity/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-synthetic_population_schema:PersonCollection a owl:Class,
+synthetic_population_schema:State a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "PersonCollection" ;
+    rdfs:label "State" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom synthetic_population_schema:Person ;
-            owl:onProperty synthetic_population_schema:entries ],
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:fips_code ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:abbreviation ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty synthetic_population_schema:entries ] ;
-    skos:definition "A holder for Person objects" ;
+            owl:onProperty synthetic_population_schema:counties ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:fips_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:pumas ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom synthetic_population_schema:PUMA ;
+            owl:onProperty synthetic_population_schema:pumas ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:abbreviation ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:abbreviation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:fips_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom synthetic_population_schema:County ;
+            owl:onProperty synthetic_population_schema:counties ] ;
+    skos:definition "A state with associated properties." ;
+    skos:exactMatch wikidata:Q7275 ;
     skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
 
-synthetic_population_schema:NamedThing a owl:Class,
+synthetic_population_schema:BlockGroup a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "NamedThing" ;
+    rdfs:label "BlockGroup" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:tract_fips_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:fips_code ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:fips_code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:fips_code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:tract_fips_code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:state_fips_code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom synthetic_population_schema:Household ;
+            owl:onProperty synthetic_population_schema:households ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:county_fips_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:state_fips_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:county_fips_code ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:tract_fips_code ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:state_fips_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:households ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:county_fips_code ] ;
+    skos:definition "a statistical division within a census tract, typically containing between 600 and 3,000 people,  which is used by the Census Bureau to present demographic data at a smaller, more localized level than  the entire census tract." ;
+    skos:exactMatch wikidata:Q5058963 ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:County a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "County" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:fips_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:tracts ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:fips_code ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:state_fips_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:state_fips_code ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom synthetic_population_schema:Tract ;
+            owl:onProperty synthetic_population_schema:tracts ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:state_fips_code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:fips_code ] ;
+    skos:definition "A county with associated properties." ;
+    skos:exactMatch NCIT:C49292,
+        wikidata:Q28575 ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:Household a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Household" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:hh_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:hh_race ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:hh_income ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:hh_race ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:serialno ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:serialno ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:hh_age ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:serialno ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:hh_income ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:hh_age ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:size ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:hh_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:hh_race ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty synthetic_population_schema:size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:hh_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty synthetic_population_schema:hh_age ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty synthetic_population_schema:hh_income ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom synthetic_population_schema:Person ;
+            owl:onProperty synthetic_population_schema:persons ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:persons ] ;
+    skos:definition "A household entity with associated properties." ;
+    skos:exactMatch OMRSE:00000076,
+        wikidata:Q259059 ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:PUMA a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "PUMA" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty synthetic_population_schema:name ],
+            owl:onProperty synthetic_population_schema:fips_code ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:fips_code ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty synthetic_population_schema:name ],
+            owl:onProperty synthetic_population_schema:state_fips_code ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty synthetic_population_schema:id ],
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:fips_code ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty synthetic_population_schema:description ],
+            owl:onProperty synthetic_population_schema:state_fips_code ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty synthetic_population_schema:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty synthetic_population_schema:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty synthetic_population_schema:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty synthetic_population_schema:description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty synthetic_population_schema:description ] ;
-    skos:definition "A generic grouping for any identifiable entity" ;
-    skos:exactMatch schema1:Thing ;
+            owl:onProperty synthetic_population_schema:state_fips_code ] ;
+    skos:definition "Public Use Microdata Areas (PUMAs) are non-overlapping, statistical geographic areas that partition each state  or equivalent entity into geographic areas containing no fewer than 100,000 people each. They cover the entirety  of the United States, Puerto Rico, and Guam." ;
+    skos:exactMatch wikidata:Q7257651 ;
     skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
 
 synthetic_population_schema:Person a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Person" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty synthetic_population_schema:hh_income ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:block_group_fips_code ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty synthetic_population_schema:age_in_years ],
+            owl:onProperty synthetic_population_schema:size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:rac1p ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:state_fips_code ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty synthetic_population_schema:primary_email ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty synthetic_population_schema:vital_status ],
+            owl:onProperty synthetic_population_schema:agep ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Integer ;
-            owl:onProperty synthetic_population_schema:age_in_years ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty synthetic_population_schema:primary_email ],
+            owl:onProperty synthetic_population_schema:size ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty synthetic_population_schema:age_in_years ],
+            owl:onProperty synthetic_population_schema:state_fips_code ],
         [ a owl:Restriction ;
-            owl:allValuesFrom synthetic_population_schema:PersonStatus ;
-            owl:onProperty synthetic_population_schema:vital_status ],
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:county_fips_code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:state_fips_code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:county_fips_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:hh_age ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:sex ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty synthetic_population_schema:birth_date ],
+            owl:onProperty synthetic_population_schema:rac1p ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:hh_race ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:tract_fips_code ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty synthetic_population_schema:birth_date ],
+            owl:onProperty synthetic_population_schema:hh_income ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty synthetic_population_schema:vital_status ],
+            owl:onProperty synthetic_population_schema:serialno ],
         [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:onDatatype xsd:string ;
-                    owl:withRestrictions ( [ xsd:pattern "^\\S+@[\\S+\\.]+\\S+" ] ) ] ;
-            owl:onProperty synthetic_population_schema:primary_email ],
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:relp ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Date ;
-            owl:onProperty synthetic_population_schema:birth_date ],
-        synthetic_population_schema:NamedThing ;
-    skos:definition "Represents a Person" ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:serialno ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:hh_age ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:serialno ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:hh_income ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty synthetic_population_schema:agep ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:rac1p ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:hh_race ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:tract_fips_code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:tract_fips_code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:relp ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty synthetic_population_schema:sporder ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:block_group_fips_code ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:county_fips_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:sporder ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:hh_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:sporder ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty synthetic_population_schema:hh_age ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:sex ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:size ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:hh_race ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:agep ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:relp ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:hh_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:hh_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:sex ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:block_group_fips_code ] ;
+    skos:definition "A person associated with a household." ;
     skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
 
-PATO:0001421 a owl:Class,
-        synthetic_population_schema:PersonStatus ;
-    rdfs:label "ALIVE" ;
-    rdfs:subClassOf synthetic_population_schema:PersonStatus .
-
-PATO:0001422 a owl:Class,
-        synthetic_population_schema:PersonStatus ;
-    rdfs:label "DEAD" ;
-    rdfs:subClassOf synthetic_population_schema:PersonStatus .
-
-<https://w3id.org/sierra-moxon/synthetic-population-schema/PersonStatus#UNKNOWN> a owl:Class,
-        synthetic_population_schema:PersonStatus ;
-    rdfs:label "UNKNOWN" ;
-    rdfs:subClassOf synthetic_population_schema:PersonStatus .
-
-synthetic_population_schema:entries a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "entries" ;
+synthetic_population_schema:Tract a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Tract" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:state_fips_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:county_fips_code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:state_fips_code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom synthetic_population_schema:BlockGroup ;
+            owl:onProperty synthetic_population_schema:block_groups ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:county_fips_code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:county_fips_code ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty synthetic_population_schema:fips_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:block_groups ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:state_fips_code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty synthetic_population_schema:fips_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty synthetic_population_schema:fips_code ] ;
+    skos:definition "A census tract is a small, relatively permanent geographic area within a county, used to collect and present  demographic data from the census, usually containing between 2,500 and 8,000 residents and designed to be as  homogeneous as possible in terms of population characteristics and living conditions." ;
+    skos:exactMatch NCIT:C67490,
+        wikidata:Q107738887 ;
     skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
 
-synthetic_population_schema:age_in_years a owl:ObjectProperty,
+synthetic_population_schema:block_groups a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "age_in_years" ;
+    rdfs:label "block_groups" ;
+    rdfs:range synthetic_population_schema:BlockGroup ;
+    skos:definition "Block groups within the tract." ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:counties a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "counties" ;
+    rdfs:range synthetic_population_schema:County ;
+    skos:definition "Counties within the state." ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:households a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "households" ;
+    rdfs:range synthetic_population_schema:Household ;
+    skos:definition "Households within the block group." ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:persons a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "persons" ;
+    rdfs:range synthetic_population_schema:Person ;
+    skos:definition "Persons within the household." ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:pumas a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "pumas" ;
+    rdfs:range synthetic_population_schema:PUMA ;
+    skos:definition "Public Use Microdata Areas within the state." ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:tracts a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "tracts" ;
+    rdfs:range synthetic_population_schema:Tract ;
+    skos:definition "Tracts within the county." ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:abbreviation a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "abbreviation" ;
+    rdfs:range linkml:String ;
+    skos:definition "Abbreviation of the entity." ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:agep a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "agep" ;
+    skos:definition "Age of the person." ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:block_group_fips_code a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "block_group_fips_code" ;
+    rdfs:range linkml:String ;
+    rdfs:subPropertyOf synthetic_population_schema:fips_code ;
+    skos:definition "Block group FIPS code." ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:rac1p a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "rac1p" ;
+    skos:definition "Race of the person." ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:relp a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "relp" ;
+    skos:definition "Relationship to the household head." ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:sex a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "sex" ;
+    skos:definition "Gender of the person." ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:sporder a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "sporder" ;
+    skos:definition "Person's order within the household." ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:hh_age a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "hh_age" ;
     rdfs:range linkml:Integer ;
-    skos:definition "Number of years since birth" ;
+    skos:definition "Age of the household head (copied for reference)." ;
     skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
 
-synthetic_population_schema:birth_date a owl:ObjectProperty,
+synthetic_population_schema:hh_id a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "birth_date" ;
-    rdfs:range linkml:Date ;
-    skos:definition "Date on which a person is born" ;
+    rdfs:label "hh_id" ;
+    rdfs:range linkml:String ;
+    skos:definition "Household ID associated with the entity." ;
     skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
 
-synthetic_population_schema:description a owl:ObjectProperty,
+synthetic_population_schema:hh_income a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "description" ;
-    skos:definition "A human-readable description for a thing" ;
+    rdfs:label "hh_income" ;
+    rdfs:range linkml:Float ;
+    skos:definition "Income of the household (copied for reference)." ;
     skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
 
-synthetic_population_schema:id a owl:ObjectProperty,
+synthetic_population_schema:hh_race a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "id" ;
-    rdfs:range linkml:Uriorcurie ;
-    skos:definition "A unique identifier for a thing" ;
+    rdfs:label "hh_race" ;
+    rdfs:range linkml:String ;
+    skos:definition "Race of the household (copied for reference)." ;
     skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
 
 synthetic_population_schema:name a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "name" ;
-    skos:definition "A human-readable name for a thing" ;
+    rdfs:range linkml:String ;
+    skos:definition "Name of the entity." ;
     skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
 
-synthetic_population_schema:primary_email a owl:ObjectProperty,
+synthetic_population_schema:serialno a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "primary_email" ;
-    skos:definition "The main email address of a person" ;
+    rdfs:label "serialno" ;
+    rdfs:range linkml:String ;
+    skos:definition "Serial number of the entity." ;
     skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
 
-synthetic_population_schema:vital_status a owl:ObjectProperty,
+synthetic_population_schema:size a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "vital_status" ;
-    rdfs:range synthetic_population_schema:PersonStatus ;
-    skos:definition "living or dead status" ;
+    rdfs:label "size" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "Size of the household (copied for reference)." ;
     skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
 
-synthetic_population_schema:PersonStatus a owl:Class,
-        linkml:EnumDefinition ;
-    owl:unionOf ( PATO:0001421 PATO:0001422 <https://w3id.org/sierra-moxon/synthetic-population-schema/PersonStatus#UNKNOWN> ) ;
-    linkml:permissible_values PATO:0001421,
-        PATO:0001422,
-        <https://w3id.org/sierra-moxon/synthetic-population-schema/PersonStatus#UNKNOWN> .
+synthetic_population_schema:tract_fips_code a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "tract_fips_code" ;
+    rdfs:range linkml:String ;
+    rdfs:subPropertyOf synthetic_population_schema:fips_code ;
+    skos:definition "Tract FIPS code." ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:county_fips_code a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "county_fips_code" ;
+    rdfs:range linkml:String ;
+    rdfs:subPropertyOf synthetic_population_schema:fips_code ;
+    skos:definition "County FIPS code." ;
+    skos:exactMatch wikidata:P882 ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:state_fips_code a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "state_fips_code" ;
+    rdfs:range linkml:String ;
+    rdfs:subPropertyOf synthetic_population_schema:fips_code ;
+    skos:definition "State FIPS code." ;
+    skos:exactMatch wikidata:Q5440257 ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
+
+synthetic_population_schema:fips_code a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "fips_code" ;
+    rdfs:range linkml:String ;
+    skos:definition "Federal Information Processing Standard code, is a unique numeric identifier assigned to geographic areas like  states and counties within the United States, used primarily by the Census Bureau to identify locations when  analyzing population data." ;
+    skos:exactMatch wikidata:Q917824 ;
+    skos:inScheme <https://w3id.org/sierra-moxon/synthetic-population-schema> .
 
 <https://w3id.org/sierra-moxon/synthetic-population-schema> a owl:Ontology ;
     rdfs:label "synthetic-population-schema" ;

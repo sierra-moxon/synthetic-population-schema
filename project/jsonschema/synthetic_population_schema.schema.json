@@ -1,205 +1,378 @@
 {
     "$defs": {
-        "NamedThing": {
+        "BlockGroup": {
             "additionalProperties": false,
-            "description": "A generic grouping for any identifiable entity",
+            "description": "a statistical division within a census tract, typically containing between 600 and 3,000 people,  which is used by the Census Bureau to present demographic data at a smaller, more localized level than  the entire census tract.",
             "properties": {
-                "description": {
-                    "description": "A human-readable description for a thing",
+                "county_fips_code": {
+                    "description": "County FIPS code.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "id": {
-                    "description": "A unique identifier for a thing",
+                "fips_code": {
+                    "description": "Federal Information Processing Standard code, is a unique numeric identifier assigned to geographic areas like  states and counties within the United States, used primarily by the Census Bureau to identify locations when  analyzing population data.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "name": {
-                    "description": "A human-readable name for a thing",
+                "households": {
+                    "description": "Households within the block group.",
+                    "items": {
+                        "$ref": "#/$defs/Household"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "state_fips_code": {
+                    "description": "State FIPS code.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "tract_fips_code": {
+                    "description": "Tract FIPS code.",
                     "type": [
                         "string",
                         "null"
                     ]
                 }
             },
-            "required": [
-                "id"
-            ],
-            "title": "NamedThing",
+            "title": "BlockGroup",
+            "type": "object"
+        },
+        "County": {
+            "additionalProperties": false,
+            "description": "A county with associated properties.",
+            "properties": {
+                "fips_code": {
+                    "description": "Federal Information Processing Standard code, is a unique numeric identifier assigned to geographic areas like  states and counties within the United States, used primarily by the Census Bureau to identify locations when  analyzing population data.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "Name of the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "state_fips_code": {
+                    "description": "State FIPS code.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "tracts": {
+                    "description": "Tracts within the county.",
+                    "items": {
+                        "$ref": "#/$defs/Tract"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "County",
+            "type": "object"
+        },
+        "Household": {
+            "additionalProperties": false,
+            "description": "A household entity with associated properties.",
+            "properties": {
+                "hh_age": {
+                    "description": "Age of the household head (copied for reference).",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "hh_id": {
+                    "description": "Household ID associated with the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hh_income": {
+                    "description": "Income of the household (copied for reference).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "hh_race": {
+                    "description": "Race of the household (copied for reference).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "persons": {
+                    "description": "Persons within the household.",
+                    "items": {
+                        "$ref": "#/$defs/Person"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "serialno": {
+                    "description": "Serial number of the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "size": {
+                    "description": "Size of the household (copied for reference).",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Household",
+            "type": "object"
+        },
+        "PUMA": {
+            "additionalProperties": false,
+            "description": "Public Use Microdata Areas (PUMAs) are non-overlapping, statistical geographic areas that partition each state  or equivalent entity into geographic areas containing no fewer than 100,000 people each. They cover the entirety  of the United States, Puerto Rico, and Guam.",
+            "properties": {
+                "fips_code": {
+                    "description": "Federal Information Processing Standard code, is a unique numeric identifier assigned to geographic areas like  states and counties within the United States, used primarily by the Census Bureau to identify locations when  analyzing population data.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "state_fips_code": {
+                    "description": "State FIPS code.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "PUMA",
             "type": "object"
         },
         "Person": {
             "additionalProperties": false,
-            "description": "Represents a Person",
+            "description": "A person associated with a household.",
             "properties": {
-                "age_in_years": {
-                    "description": "Number of years since birth",
+                "agep": {
+                    "description": "Age of the person.",
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
-                "birth_date": {
-                    "description": "Date on which a person is born",
-                    "format": "date",
+                "block_group_fips_code": {
+                    "description": "Block group FIPS code.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "description": {
-                    "description": "A human-readable description for a thing",
+                "county_fips_code": {
+                    "description": "County FIPS code.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "id": {
-                    "description": "A unique identifier for a thing",
-                    "type": "string"
+                "hh_age": {
+                    "description": "Age of the household head (copied for reference).",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
-                "name": {
-                    "description": "A human-readable name for a thing",
+                "hh_id": {
+                    "description": "Household ID associated with the entity.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "primary_email": {
-                    "description": "The main email address of a person",
-                    "pattern": "^\\S+@[\\S+\\.]+\\S+",
+                "hh_income": {
+                    "description": "Income of the household (copied for reference).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "hh_race": {
+                    "description": "Race of the household (copied for reference).",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "vital_status": {
-                    "$ref": "#/$defs/PersonStatus",
-                    "description": "living or dead status"
+                "rac1p": {
+                    "description": "Race of the person.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "relp": {
+                    "description": "Relationship to the household head.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "serialno": {
+                    "description": "Serial number of the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sex": {
+                    "description": "Gender of the person.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "size": {
+                    "description": "Size of the household (copied for reference).",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "sporder": {
+                    "description": "Person's order within the household.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "state_fips_code": {
+                    "description": "State FIPS code.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "tract_fips_code": {
+                    "description": "Tract FIPS code.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
-            "required": [
-                "id"
-            ],
             "title": "Person",
             "type": "object"
         },
-        "PersonCollection": {
+        "State": {
             "additionalProperties": false,
-            "description": "A holder for Person objects",
+            "description": "A state with associated properties.",
             "properties": {
-                "entries": {
-                    "additionalProperties": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/Person__identifier_optional"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ]
+                "abbreviation": {
+                    "description": "Abbreviation of the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "counties": {
+                    "description": "Counties within the state.",
+                    "items": {
+                        "$ref": "#/$defs/County"
                     },
                     "type": [
-                        "object",
-                        "null"
-                    ]
-                }
-            },
-            "title": "PersonCollection",
-            "type": "object"
-        },
-        "PersonStatus": {
-            "description": "",
-            "enum": [
-                "ALIVE",
-                "DEAD",
-                "UNKNOWN"
-            ],
-            "title": "PersonStatus",
-            "type": "string"
-        },
-        "Person__identifier_optional": {
-            "additionalProperties": false,
-            "description": "Represents a Person",
-            "properties": {
-                "age_in_years": {
-                    "description": "Number of years since birth",
-                    "type": [
-                        "integer",
+                        "array",
                         "null"
                     ]
                 },
-                "birth_date": {
-                    "description": "Date on which a person is born",
-                    "format": "date",
+                "fips_code": {
+                    "description": "Federal Information Processing Standard code, is a unique numeric identifier assigned to geographic areas like  states and counties within the United States, used primarily by the Census Bureau to identify locations when  analyzing population data.",
                     "type": [
                         "string",
                         "null"
                     ]
-                },
-                "description": {
-                    "description": "A human-readable description for a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "A unique identifier for a thing",
-                    "type": "string"
                 },
                 "name": {
-                    "description": "A human-readable name for a thing",
+                    "description": "Name of the entity.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "primary_email": {
-                    "description": "The main email address of a person",
-                    "pattern": "^\\S+@[\\S+\\.]+\\S+",
+                "pumas": {
+                    "description": "Public Use Microdata Areas within the state.",
+                    "items": {
+                        "$ref": "#/$defs/PUMA"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
-                },
-                "vital_status": {
-                    "$ref": "#/$defs/PersonStatus",
-                    "description": "living or dead status"
                 }
             },
-            "required": [],
-            "title": "Person",
+            "title": "State",
+            "type": "object"
+        },
+        "Tract": {
+            "additionalProperties": false,
+            "description": "A census tract is a small, relatively permanent geographic area within a county, used to collect and present  demographic data from the census, usually containing between 2,500 and 8,000 residents and designed to be as  homogeneous as possible in terms of population characteristics and living conditions.",
+            "properties": {
+                "block_groups": {
+                    "description": "Block groups within the tract.",
+                    "items": {
+                        "$ref": "#/$defs/BlockGroup"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "county_fips_code": {
+                    "description": "County FIPS code.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "fips_code": {
+                    "description": "Federal Information Processing Standard code, is a unique numeric identifier assigned to geographic areas like  states and counties within the United States, used primarily by the Census Bureau to identify locations when  analyzing population data.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "state_fips_code": {
+                    "description": "State FIPS code.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Tract",
             "type": "object"
         }
     },
     "$id": "https://w3id.org/sierra-moxon/synthetic-population-schema",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
-    "description": "A holder for Person objects",
     "metamodel_version": "1.7.0",
-    "properties": {
-        "entries": {
-            "additionalProperties": {
-                "anyOf": [
-                    {
-                        "$ref": "#/$defs/Person__identifier_optional"
-                    },
-                    {
-                        "type": "null"
-                    }
-                ]
-            },
-            "type": [
-                "object",
-                "null"
-            ]
-        }
-    },
     "title": "synthetic-population-schema",
     "type": "object",
     "version": null

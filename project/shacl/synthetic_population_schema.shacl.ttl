@@ -1,90 +1,293 @@
-@prefix PATO: <http://purl.obolibrary.org/obo/PATO_> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix schema1: <http://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix synthetic_population_schema: <https://w3id.org/sierra-moxon/synthetic-population-schema/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-schema1:Thing a sh:NodeShape ;
+synthetic_population_schema:State a sh:NodeShape ;
     sh:closed true ;
-    sh:description "A generic grouping for any identifiable entity" ;
-    sh:ignoredProperties ( synthetic_population_schema:age_in_years rdf:type schema1:birthDate synthetic_population_schema:vital_status schema1:email ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "A human-readable description for a thing" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path schema1:description ],
-        [ sh:datatype xsd:anyURI ;
-            sh:description "A unique identifier for a thing" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path schema1:identifier ],
+    sh:description "A state with associated properties." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class synthetic_population_schema:County ;
+            sh:description "Counties within the state." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path synthetic_population_schema:counties ],
         [ sh:datatype xsd:string ;
-            sh:description "A human-readable name for a thing" ;
+            sh:description "Name of the entity." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path schema1:name ] ;
-    sh:targetClass schema1:Thing .
-
-synthetic_population_schema:PersonCollection a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A holder for Person objects" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class synthetic_population_schema:Person ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path synthetic_population_schema:entries ] ;
-    sh:targetClass synthetic_population_schema:PersonCollection .
-
-synthetic_population_schema:Person a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "Represents a Person" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:anyURI ;
-            sh:description "A unique identifier for a thing" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path schema1:identifier ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of years since birth" ;
+            sh:path synthetic_population_schema:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "Abbreviation of the entity." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
-            sh:path synthetic_population_schema:age_in_years ],
+            sh:path synthetic_population_schema:abbreviation ],
+        [ sh:class synthetic_population_schema:PUMA ;
+            sh:description "Public Use Microdata Areas within the state." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path synthetic_population_schema:pumas ],
         [ sh:datatype xsd:string ;
-            sh:description "A human-readable name for a thing" ;
+            sh:description "Federal Information Processing Standard code, is a unique numeric identifier assigned to geographic areas like  states and counties within the United States, used primarily by the Census Bureau to identify locations when  analyzing population data." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path synthetic_population_schema:fips_code ] ;
+    sh:targetClass synthetic_population_schema:State .
+
+synthetic_population_schema:BlockGroup a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "a statistical division within a census tract, typically containing between 600 and 3,000 people,  which is used by the Census Bureau to present demographic data at a smaller, more localized level than  the entire census tract." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Federal Information Processing Standard code, is a unique numeric identifier assigned to geographic areas like  states and counties within the United States, used primarily by the Census Bureau to identify locations when  analyzing population data." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path synthetic_population_schema:fips_code ],
+        [ sh:class synthetic_population_schema:Household ;
+            sh:description "Households within the block group." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path synthetic_population_schema:households ],
+        [ sh:datatype xsd:string ;
+            sh:description "County FIPS code." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path synthetic_population_schema:county_fips_code ],
+        [ sh:datatype xsd:string ;
+            sh:description "Tract FIPS code." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path synthetic_population_schema:tract_fips_code ],
+        [ sh:datatype xsd:string ;
+            sh:description "State FIPS code." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path synthetic_population_schema:state_fips_code ] ;
+    sh:targetClass synthetic_population_schema:BlockGroup .
+
+synthetic_population_schema:County a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A county with associated properties." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Federal Information Processing Standard code, is a unique numeric identifier assigned to geographic areas like  states and counties within the United States, used primarily by the Census Bureau to identify locations when  analyzing population data." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path synthetic_population_schema:fips_code ],
+        [ sh:class synthetic_population_schema:Tract ;
+            sh:description "Tracts within the county." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path synthetic_population_schema:tracts ],
+        [ sh:datatype xsd:string ;
+            sh:description "Name of the entity." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path synthetic_population_schema:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "State FIPS code." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path synthetic_population_schema:state_fips_code ] ;
+    sh:targetClass synthetic_population_schema:County .
+
+synthetic_population_schema:Household a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A household entity with associated properties." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Race of the household (copied for reference)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path synthetic_population_schema:hh_race ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Size of the household (copied for reference)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 5 ;
-            sh:path schema1:name ],
-        [ sh:datatype xsd:date ;
-            sh:description "Date on which a person is born" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path schema1:birthDate ],
-        [ sh:description "living or dead status" ;
-            sh:in ( PATO:0001421 PATO:0001422 "UNKNOWN" ) ;
-            sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path synthetic_population_schema:vital_status ],
+            sh:path synthetic_population_schema:size ],
         [ sh:datatype xsd:string ;
-            sh:description "The main email address of a person" ;
+            sh:description "Serial number of the entity." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path schema1:email ;
-            sh:pattern "^\\S+@[\\S+\\.]+\\S+" ],
+            sh:path synthetic_population_schema:serialno ],
         [ sh:datatype xsd:string ;
-            sh:description "A human-readable description for a thing" ;
+            sh:description "Household ID associated with the entity." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path synthetic_population_schema:hh_id ],
+        [ sh:datatype xsd:float ;
+            sh:description "Income of the household (copied for reference)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path synthetic_population_schema:hh_income ],
+        [ sh:class synthetic_population_schema:Person ;
+            sh:description "Persons within the household." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path synthetic_population_schema:persons ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Age of the household head (copied for reference)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path synthetic_population_schema:hh_age ] ;
+    sh:targetClass synthetic_population_schema:Household .
+
+synthetic_population_schema:PUMA a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Public Use Microdata Areas (PUMAs) are non-overlapping, statistical geographic areas that partition each state  or equivalent entity into geographic areas containing no fewer than 100,000 people each. They cover the entirety  of the United States, Puerto Rico, and Guam." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Federal Information Processing Standard code, is a unique numeric identifier assigned to geographic areas like  states and counties within the United States, used primarily by the Census Bureau to identify locations when  analyzing population data." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path synthetic_population_schema:fips_code ],
+        [ sh:datatype xsd:string ;
+            sh:description "State FIPS code." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path synthetic_population_schema:state_fips_code ] ;
+    sh:targetClass synthetic_population_schema:PUMA .
+
+synthetic_population_schema:Person a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A person associated with a household." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Gender of the person." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 14 ;
+            sh:path synthetic_population_schema:sex ],
+        [ sh:datatype xsd:string ;
+            sh:description "Race of the person." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path synthetic_population_schema:rac1p ],
+        [ sh:datatype xsd:string ;
+            sh:description "County FIPS code." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path synthetic_population_schema:county_fips_code ],
+        [ sh:datatype xsd:string ;
+            sh:description "State FIPS code." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path synthetic_population_schema:state_fips_code ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Person's order within the household." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path synthetic_population_schema:sporder ],
+        [ sh:datatype xsd:string ;
+            sh:description "Tract FIPS code." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path synthetic_population_schema:tract_fips_code ],
+        [ sh:datatype xsd:string ;
+            sh:description "Block group FIPS code." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path synthetic_population_schema:block_group_fips_code ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Age of the person." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path synthetic_population_schema:agep ],
+        [ sh:datatype xsd:string ;
+            sh:description "Relationship to the household head." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path synthetic_population_schema:relp ],
+        [ sh:datatype xsd:string ;
+            sh:description "Race of the household (copied for reference)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path synthetic_population_schema:hh_race ],
+        [ sh:datatype xsd:string ;
+            sh:description "Household ID associated with the entity." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path synthetic_population_schema:hh_id ],
+        [ sh:datatype xsd:string ;
+            sh:description "Serial number of the entity." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path synthetic_population_schema:serialno ],
+        [ sh:datatype xsd:float ;
+            sh:description "Income of the household (copied for reference)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path synthetic_population_schema:hh_income ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Size of the household (copied for reference)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path synthetic_population_schema:size ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Age of the household head (copied for reference)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 6 ;
-            sh:path schema1:description ] ;
+            sh:path synthetic_population_schema:hh_age ] ;
     sh:targetClass synthetic_population_schema:Person .
+
+synthetic_population_schema:Tract a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A census tract is a small, relatively permanent geographic area within a county, used to collect and present  demographic data from the census, usually containing between 2,500 and 8,000 residents and designed to be as  homogeneous as possible in terms of population characteristics and living conditions." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "County FIPS code." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path synthetic_population_schema:county_fips_code ],
+        [ sh:class synthetic_population_schema:BlockGroup ;
+            sh:description "Block groups within the tract." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path synthetic_population_schema:block_groups ],
+        [ sh:datatype xsd:string ;
+            sh:description "Federal Information Processing Standard code, is a unique numeric identifier assigned to geographic areas like  states and counties within the United States, used primarily by the Census Bureau to identify locations when  analyzing population data." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path synthetic_population_schema:fips_code ],
+        [ sh:datatype xsd:string ;
+            sh:description "State FIPS code." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path synthetic_population_schema:state_fips_code ] ;
+    sh:targetClass synthetic_population_schema:Tract .
 

@@ -1,31 +1,71 @@
 # metamodel_version: 1.7.0
-enum PersonStatus
+type BlockGroup
   {
-    ALIVE
-    DEAD
-    UNKNOWN
+    fipsCode: String
+    tractFipsCode: String
+    stateFipsCode: String
+    countyFipsCode: String
+    households: [Household]
   }
 
-type NamedThing
+type County
   {
-    id: Uriorcurie!
     name: String
-    description: String
+    fipsCode: String
+    stateFipsCode: String
+    tracts: [Tract]
+  }
+
+type Household
+  {
+    serialno: String
+    hhId: String
+    hhAge: Integer
+    hhIncome: Float
+    hhRace: String
+    size: Integer
+    persons: [Person]
   }
 
 type Person
   {
-    id: Uriorcurie!
-    name: String
-    description: String
-    primaryEmail: String
-    birthDate: Date
-    ageInYears: Integer
-    vitalStatus: PersonStatus
+    stateFipsCode: String
+    countyFipsCode: String
+    tractFipsCode: String
+    blockGroupFipsCode: String
+    serialno: String
+    hhId: String
+    hhAge: Integer
+    hhIncome: Float
+    hhRace: String
+    size: Integer
+    sporder: Integer
+    relp: String
+    rac1p: String
+    agep: Integer
+    sex: String
   }
 
-type PersonCollection
+type PUMA
   {
-    entries: [Person]
+    fipsCode: String
+    stateFipsCode: String
+  }
+
+type State
+  {
+    fipsCode: String
+    name: String
+    abbreviation: String
+    counties: [County]
+    pumas: [PUMA]
+  }
+
+type Tract
+  {
+    fipsCode: String
+    stateFipsCode: String
+    countyFipsCode: String
+    blockGroups: [BlockGroup]
   }
 
