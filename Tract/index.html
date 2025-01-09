@@ -210,7 +210,7 @@
 
 
 
-    Tract --&gt; "*" BlockGroup : block_groups
+    Tract --&gt; "1..*" BlockGroup : block_groups
     click BlockGroup href "../BlockGroup"
 
 
@@ -254,7 +254,7 @@
 </tr>
 <tr>
 <td><a href="../block_groups/">block_groups</a></td>
-<td>* <br/> <a href="../BlockGroup/">BlockGroup</a></td>
+<td>1..* <br/> <a href="../BlockGroup/">BlockGroup</a></td>
 <td>Block groups within the tract</td>
 <td>direct</td>
 </tr>
@@ -358,6 +358,7 @@ attributes:
     - County
     - Tract
     - BlockGroup
+    - School
     range: string
   state_fips_code:
     name: state_fips_code
@@ -374,6 +375,7 @@ attributes:
     - County
     - Tract
     - BlockGroup
+    - School
     - Person
     range: string
   county_fips_code:
@@ -389,6 +391,7 @@ attributes:
     domain_of:
     - Tract
     - BlockGroup
+    - School
     - Person
     range: string
   block_groups:
@@ -401,6 +404,7 @@ attributes:
     domain_of:
     - Tract
     range: BlockGroup
+    required: true
     multivalued: true
 
 </code></pre>

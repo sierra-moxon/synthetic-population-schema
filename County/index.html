@@ -216,7 +216,7 @@
 
 
 
-    County --&gt; "*" Tract : tracts
+    County --&gt; "1..*" Tract : tracts
     click Tract href "../Tract"
 
 
@@ -254,7 +254,7 @@
 </tr>
 <tr>
 <td><a href="../tracts/">tracts</a></td>
-<td>* <br/> <a href="../Tract/">Tract</a></td>
+<td>1..* <br/> <a href="../Tract/">Tract</a></td>
 <td>Tracts within the county</td>
 <td>direct</td>
 </tr>
@@ -344,6 +344,7 @@ attributes:
     domain_of:
     - State
     - County
+    - School
     range: string
   fips_code:
     name: fips_code
@@ -363,6 +364,7 @@ attributes:
     - County
     - Tract
     - BlockGroup
+    - School
     range: string
   state_fips_code:
     name: state_fips_code
@@ -379,6 +381,7 @@ attributes:
     - County
     - Tract
     - BlockGroup
+    - School
     - Person
     range: string
   tracts:
@@ -391,6 +394,7 @@ attributes:
     domain_of:
     - County
     range: Tract
+    required: true
     multivalued: true
 
 </code></pre>

@@ -218,7 +218,7 @@
 
 
 
-    Household --&gt; "*" Person : persons
+    Household --&gt; "1..*" Person : persons
     click Person href "../Person"
 
 
@@ -248,7 +248,7 @@
 </tr>
 <tr>
 <td><a href="../hh_id/">hh_id</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
 <td>Household ID associated with the entity</td>
 <td>direct</td>
 </tr>
@@ -278,7 +278,7 @@
 </tr>
 <tr>
 <td><a href="../persons/">persons</a></td>
-<td>* <br/> <a href="../Person/">Person</a></td>
+<td>1..* <br/> <a href="../Person/">Person</a></td>
 <td>Persons within the household</td>
 <td>direct</td>
 </tr>
@@ -377,12 +377,14 @@ attributes:
     description: Household ID associated with the entity.
     from_schema: https://w3id.org/sierra-moxon/synthetic-population-schema
     rank: 1000
+    identifier: true
     alias: hh_id
     owner: Household
     domain_of:
     - Household
     - Person
     range: string
+    required: true
   hh_age:
     name: hh_age
     description: Age of the household head (copied for reference).
@@ -437,6 +439,7 @@ attributes:
     domain_of:
     - Household
     range: Person
+    required: true
     multivalued: true
 
 </code></pre>

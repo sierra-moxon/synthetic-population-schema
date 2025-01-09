@@ -207,7 +207,7 @@
 
 
 
-    State --&gt; "*" County : counties
+    State --&gt; "1..*" County : counties
     click County href "../County"
 
 
@@ -220,7 +220,7 @@
 
 
 
-    State --&gt; "*" PUMA : pumas
+    State --&gt; "1..*" PUMA : pumas
     click PUMA href "../PUMA"
 
 
@@ -258,13 +258,13 @@
 </tr>
 <tr>
 <td><a href="../counties/">counties</a></td>
-<td>* <br/> <a href="../County/">County</a></td>
+<td>1..* <br/> <a href="../County/">County</a></td>
 <td>Counties within the state</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../pumas/">pumas</a></td>
-<td>* <br/> <a href="../PUMA/">PUMA</a></td>
+<td>1..* <br/> <a href="../PUMA/">PUMA</a></td>
 <td>Public Use Microdata Areas within the state</td>
 <td>direct</td>
 </tr>
@@ -342,6 +342,7 @@ attributes:
     - County
     - Tract
     - BlockGroup
+    - School
     range: string
   name:
     name: name
@@ -353,6 +354,7 @@ attributes:
     domain_of:
     - State
     - County
+    - School
     range: string
   abbreviation:
     name: abbreviation
@@ -374,6 +376,7 @@ attributes:
     domain_of:
     - State
     range: County
+    required: true
     multivalued: true
   pumas:
     name: pumas
@@ -385,6 +388,7 @@ attributes:
     domain_of:
     - State
     range: PUMA
+    required: true
     multivalued: true
 
 </code></pre>

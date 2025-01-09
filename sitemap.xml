@@ -2,214 +2,222 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/BlockGroup/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Boolean/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/County/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Curie/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Date/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/DateOrDatetime/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Datetime/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Decimal/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Double/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Float/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Household/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Integer/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Jsonpath/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Jsonpointer/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Ncname/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Nodeidentifier/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Objectidentifier/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/PUMA/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Person/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
+    </url>
+    <url>
+         <loc>https://sierra-moxon.github.io/synthetic-population-schema/School/</loc>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Sparqlpath/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/State/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/String/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Time/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Tract/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Uri/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/Uriorcurie/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/abbreviation/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/about/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/agep/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/block_group_fips_code/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/block_groups/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/counties/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/county_fips_code/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/fips_code/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/hh_age/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/hh_id/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/hh_income/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/hh_race/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/households/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/name/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/persons/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/pumas/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/rac1p/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/relp/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
+    </url>
+    <url>
+         <loc>https://sierra-moxon.github.io/synthetic-population-schema/school/</loc>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/serialno/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/sex/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/size/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/sporder/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/state_fips_code/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/synthetic-population-schema/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/tract_fips_code/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/synthetic-population-schema/tracts/</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2025-01-09</lastmod>
     </url>
 </urlset>
