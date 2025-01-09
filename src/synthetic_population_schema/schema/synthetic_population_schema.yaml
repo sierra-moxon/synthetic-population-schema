@@ -85,6 +85,16 @@ classes:
     exact_mappings:
       - wikidata:Q5058963
 
+  School:
+    description: A school entity with associated properties.
+    slots:
+      - name
+      - fips_code
+      - state_fips_code
+      - county_fips_code
+      - tract_fips_code
+      - block_group_fips_code
+
   Household:
     description: A household entity with associated properties.
     slots:
@@ -112,6 +122,7 @@ classes:
       - hh_income
       - hh_race
       - size
+      - school
     attributes:
       sporder:
         description: Person's order within the household.
@@ -130,18 +141,24 @@ classes:
         range: string
 
 slots:
+  school:
+    range: School
+    description: school assigned to a particular person
   counties:
     range: County
     multivalued: true
     description: Counties within the state.
+    required: true
   tracts:
     range: Tract
     multivalued: true
     description: Tracts within the county.
+    required: true
   block_groups:
     range: BlockGroup
     multivalued: true
     description: Block groups within the tract.
+    required: true
   households:
     range: Household
     multivalued: true
@@ -150,10 +167,12 @@ slots:
     range: Person
     multivalued: true
     description: Persons within the household.
+    required: true
   pumas:
     range: PUMA
     multivalued: true
     description: Public Use Microdata Areas within the state.
+    required: true
   fips_code:
     description: >-
       Federal Information Processing Standard code, is a unique numeric identifier assigned to geographic areas like 
@@ -194,6 +213,8 @@ slots:
   hh_id:
     description: Household ID associated with the entity.
     range: string
+    identifier: true
+    required: true
   hh_age:
     description: Age of the household head (copied for reference).
     range: integer
