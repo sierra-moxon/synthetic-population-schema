@@ -5,7 +5,7 @@ A LinkML schema capturing the model used to enumerate https://github.com/RTIInte
 
 ## Project Setup
 
-1. Clone *cmdr* project repository
+1. Clone *synthetic-population-schema* project repository
 
 ```
 $ git clone https://github.com/sierra-moxon/synthetic-population-schema.git
@@ -30,7 +30,7 @@ $ make test_transform
 ## Developer Documentation
 
 <details>
-Use the `make` command to generate project artefacts:
+Use the `make` command to generate project artifacts:
 
 - `make all`: make everything
 - `make deploy`: deploys site
