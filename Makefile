@@ -55,6 +55,30 @@ ifdef LINKML_GENERATORS_TYPESCRIPT_ARGS
 GEN_TS_ARGS += ${LINKML_GENERATORS_TYPESCRIPT_ARGS}
 endif
 
+# Makefile
+
+# Define variables
+DOCKER_COMPOSE_FILE=docker-compose.yml
+PYTHON_SCRIPT=load_data.py
+
+# Default Neo4j Docker Compose targets
+build:
+	docker build -t my_neo4j .
+
+start:
+	docker run -d --name neo4j_container -p 7474:7474 -p 7687:7687 my_neo4j
+
+stop:
+	docker stop neo4j_container || true
+	docker rm neo4j_container || true
+
+rebuild: stop build start
+
+# Python script targets
+load:
+	poetry run python $(PYTHON_SCRIPT)
+
+.PHONY: build start stop rebuild load
 
 # basename of a YAML file in model/
 .PHONY: all clean setup gen-project gen-examples gendoc git-init-add git-init git-add git-commit git-status

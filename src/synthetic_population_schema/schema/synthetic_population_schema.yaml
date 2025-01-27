@@ -130,6 +130,9 @@ classes:
       relp:
         description: Relationship to the household head.
         range: string
+        comments: >-
+            Relationship to the household head. 1 = Householder, 2 = Spouse, 3 = Child, 4 = Other relative, 5 = Nonrelative, 
+            6 = Foster child, 7 = Foster parent, 8 = Other nonrelative. (map to ontology of familial relationships)
       rac1p:
         description: Race of the person.
         range: string
