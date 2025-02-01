@@ -10,7 +10,7 @@ from neo4j import GraphDatabase
 
 NEO4J_URI = "bolt://localhost:7687"  # Change if needed
 NEO4J_USER = "neo4j"
-NEO4J_PASSWORD = "password"
+NEO4J_PASSWORD = "synthpop_123"  # Change if needed
 
 def load_data_into_neo4j(state_dir):
     """
@@ -24,7 +24,7 @@ def load_data_into_neo4j(state_dir):
 
     for file in os.listdir(state_dir):
         if file.endswith(".txt"):
-            file_path = os.path.join(state_dir, file)
+            file_path = f"file:///var/lib/neo4j/import/2010/State/{file}"
             parts = file.split("_")
             state_code = parts[2]
             class_name = "_".join(parts[3:]).replace(".txt", "")
@@ -55,13 +55,13 @@ def download_github_repo(repo_url, branch="main", output_dir="output"):
         output_dir (str): Directory where the repository will be cloned.
     """
     local_dir = pystow.join(output_dir)
-    if os.path.exists(local_dir):
-        print(f"Directory {local_dir} already exists. Removing for clean start.")
-        shutil.rmtree(local_dir)
-
-    print(f"Cloning {repo_url} into {local_dir}...")
-    Repo.clone_from(repo_url, local_dir, branch=branch)
-    print("Clone completed!")
+    # if os.path.exists(local_dir):
+    #     print(f"Directory {local_dir} already exists. Removing for clean start.")
+    #     shutil.rmtree(local_dir)
+    #
+    # print(f"Cloning {repo_url} into {local_dir}...")
+    # Repo.clone_from(repo_url, local_dir, branch=branch)
+    # print("Clone completed!")
 
     return local_dir
 
@@ -143,6 +143,12 @@ if __name__ == "__main__":
     download_files_with_wget(base_download_url, cloned_dir)
 
     state_dir = os.path.join(cloned_dir, "2010", "State")
+
+    # Ensure Neo4j can access the data directory
+    data_dir = "/Users/SMoxon/.data/synthetic_populations"
+    print(f"Setting permissions for {data_dir}...")
+    subprocess.run(["chmod", "-R", "775", data_dir])
+
 
     # Load into Neo4j
     load_data_into_neo4j(state_dir)
