@@ -1,11 +1,48 @@
 from kghub_downloader.download_utils import download_from_yaml  # type: ignore
-import os
 from git import Repo
 import pystow
 import shutil
 import subprocess
 import zipfile
 from concurrent.futures import ThreadPoolExecutor
+import os
+from neo4j import GraphDatabase
+
+NEO4J_URI = "bolt://localhost:7687"  # Change if needed
+NEO4J_USER = "neo4j"
+NEO4J_PASSWORD = "password"
+
+def load_data_into_neo4j(state_dir):
+    """
+    Loads the parsed CSV data into Neo4j using LOAD CSV for bulk inserts.
+    """
+    driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
+
+    def execute_query(query, parameters=None):
+        with driver.session() as session:
+            session.run(query, parameters)
+
+    for file in os.listdir(state_dir):
+        if file.endswith(".txt"):
+            file_path = os.path.join(state_dir, file)
+            parts = file.split("_")
+            state_code = parts[2]
+            class_name = "_".join(parts[3:]).replace(".txt", "")
+
+            print(f"Ingesting {file} into Neo4j...")
+
+            query = f"""
+            LOAD CSV WITH HEADERS FROM 'file://{file_path}' AS row
+            MERGE (s:State {{code: '{state_code}'}})
+            MERGE (d:{class_name} {{id: row.id}})
+            SET d += row
+            MERGE (s)-[:HAS_DATA]->(d);
+            """
+            execute_query(query)
+
+    driver.close()
+    print("Data ingestion into Neo4j complete!")
+
 
 
 def download_github_repo(repo_url, branch="main", output_dir="output"):
@@ -104,3 +141,8 @@ if __name__ == "__main__":
 
     cloned_dir = download_github_repo(github_repo_url, branch="main", output_dir=local_output_dir)
     download_files_with_wget(base_download_url, cloned_dir)
+
+    state_dir = os.path.join(cloned_dir, "2010", "State")
+
+    # Load into Neo4j
+    load_data_into_neo4j(state_dir)
