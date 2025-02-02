@@ -7,8 +7,9 @@ if __name__ == "__main__":
     password = "synthpop_123"
 
     query = """
-    LOAD CSV FROM 'file:///2010/State/2010_ver1_56_pums_p.txt' AS row
-    RETURN row
+LOAD CSV WITH HEADERS FROM 'file:///2010/State/2010_ver1_56_pums_p.txt' AS row
+RETURN row.serialno, row.st, row.agep
+LIMIT 5;
     """
 
     driver = GraphDatabase.driver(uri, auth=(user, password))

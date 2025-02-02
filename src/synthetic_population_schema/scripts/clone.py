@@ -26,18 +26,19 @@ def load_data_into_neo4j(state_dir):
         if file.endswith(".txt"):
             file_path = f"/var/lib/neo4j/import/2010/State/{file}"
             parts = file.split("_")
-            state_code = parts[2]
+            code = parts[2]
             class_name = "_".join(parts[3:]).replace(".txt", "")
 
             print(f"Ingesting {file} into Neo4j...")
 
+            #     LOAD CSV FROM 'file:///2010/State/2010_ver1_56_pums_p.txt' AS row
+            print(f"Loading {file_path} into Neo4j...")
             query = f"""
             LOAD CSV WITH HEADERS FROM 'file://{file_path}' AS row
-            MERGE (s:State {{code: '{state_code}'}})
-            MERGE (d:{class_name} {{id: row.id}})
-            SET d += row
-            MERGE (s)-[:HAS_DATA]->(d);
+            
             """
+
+            print(query)
             execute_query(query)
 
     driver.close()
