@@ -18,20 +18,32 @@ def load_data_into_neo4j(state_dir):
             session.run(query, parameters)
 
     for file in os.listdir(state_dir):
-        if file.endswith(".txt"):
-            file_path = f"/var/lib/neo4j/import/2010/State/{file}"
-            parts = file.split("_")
-
-            print(f"Ingesting {file} into Neo4j...")
-
-            #     LOAD CSV FROM 'file:///2010/State/2010_ver1_56_pums_p.txt' AS row
-            print(f"Loading {file_path} into Neo4j...")
-            query = f"""
-            LOAD CSV WITH HEADERS FROM 'file://{file_path}' AS row
-            """
-
-            print(query)
+        if file.endswith(".txt") and ("school" or "household") in file:
+            if "school" in file:
+                print(f"Loading schools...{file}")
+                query = f"""
+                    LOAD CSV WITH HEADERS FROM 'file:///2010/State/{file}' AS row
+                    MERGE (s:School {{id: row.sp_id}})
+                    SET s.name = row.name,
+                        s.city = row.city,
+                        s.county = row.county,
+                        s.zipcode = row.zipcode,
+                        s.total_students = toInteger(row.total),
+                        s.latitude = toFloat(row.latitude),
+                        s.longitude = toFloat(row.longitude);
+                """
             execute_query(query)
-
+            if "household" in file:
+                print(f"Loading households...{file}")
+                query = f"""
+                    LOAD CSV WITH HEADERS FROM 'file:///2010/State/{file}' AS row
+                    MERGE (h:Household {{id: row.sp_id}})
+                    SET h.city = row.city,
+                        h.county = row.county,
+                        h.zipcode = row.zipcode,
+                        h.latitude = toFloat(row.latitude),
+                        h.longitude = toFloat(row.longitude);
+                        """
+            execute_query(query)
     driver.close()
     print("Data ingestion into Neo4j complete!")
