@@ -1,7 +1,6 @@
 import os
 from neo4j import GraphDatabase
 
-
 NEO4J_URI = "bolt://localhost:7687"  # Change if needed
 NEO4J_USER = "neo4j"
 NEO4J_PASSWORD = "synthpop_123"  # Change if needed
@@ -17,8 +16,17 @@ def load_data_into_neo4j(state_dir):
         with driver.session() as session:
             session.run(query, parameters)
 
+    # Create indexes for faster lookup
+    index_queries = [
+        "CREATE INDEX IF NOT EXISTS FOR (s:School) ON (s.id)",
+        "CREATE INDEX IF NOT EXISTS FOR (h:Household) ON (h.id)"
+    ]
+
+    for query in index_queries:
+        execute_query(query)
+
     for file in os.listdir(state_dir):
-        if file.endswith(".txt") and ("school" or "household") in file:
+        if file.endswith(".txt") and ("school" in file or "household" in file):
             if "school" in file:
                 print(f"Loading schools...{file}")
                 query = f"""
@@ -32,7 +40,8 @@ def load_data_into_neo4j(state_dir):
                         s.latitude = toFloat(row.latitude),
                         s.longitude = toFloat(row.longitude);
                 """
-            execute_query(query)
+                execute_query(query)
+
             if "household" in file:
                 print(f"Loading households...{file}")
                 query = f"""
@@ -43,7 +52,8 @@ def load_data_into_neo4j(state_dir):
                         h.zipcode = row.zipcode,
                         h.latitude = toFloat(row.latitude),
                         h.longitude = toFloat(row.longitude);
-                        """
-            execute_query(query)
+                """
+                execute_query(query)
+
     driver.close()
     print("Data ingestion into Neo4j complete!")

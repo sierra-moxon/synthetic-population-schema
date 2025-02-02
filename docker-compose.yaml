@@ -18,8 +18,9 @@ services:
       NEO4J_dbms_security_allow__csv__import__from__file__urls: "true"
       NEO4J_server_directories_import: "/var/lib/neo4j/import"
       NEO4J_dbms_memory_pagecache_size: 1G  # Optional tuning
-      NEO4J_dbms_memory_heap_initial__size: 1G
-      NEO4J_dbms_memory_heap_max__size: 2G
+      NEO4J_dbms_memory_heap_initial__size: 4G
+      NEO4J_dbms_memory_heap_max__size: 8G
+      NEO4J_dbms_memory_transaction_total__max: 4G
     volumes:
       - /Users/Smoxon/.data/synthetic_populations:/var/lib/neo4j/import
       - neo4j-data:/data  # Stores Neo4j database data

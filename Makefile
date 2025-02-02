@@ -58,21 +58,27 @@ endif
 # Makefile
 
 # Define variables
-DOCKER_COMPOSE_FILE=docker-compose.yml
+DOCKER_COMPOSE_FILE=docker-compose.yaml
 PYTHON_SCRIPT=load_data.py
 
 # Default Neo4j Docker Compose targets
-build:
+build_container:
 	docker build -t my_neo4j .
 
-start:
+start_container:
 	docker run -d --name neo4j-container -p 7474:7474 -p 7687:7687 my-neo4j
 
-stop:
+stop_container:
 	docker stop neo4j-container || true
 	docker rm neo4j-container || true
 
-rebuild: stop build start
+up:
+	docker-compose -f $(DOCKER_COMPOSE_FILE) up -d
+
+down:
+	docker-compose -f $(DOCKER_COMPOSE_FILE) down
+
+rebuild: stop_container build_container start_container
 
 # Python script targets
 load:
