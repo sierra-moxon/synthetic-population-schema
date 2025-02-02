@@ -66,11 +66,11 @@ build:
 	docker build -t my_neo4j .
 
 start:
-	docker run -d --name neo4j_container -p 7474:7474 -p 7687:7687 my_neo4j
+	docker run -d --name neo4j-container -p 7474:7474 -p 7687:7687 my-neo4j
 
 stop:
-	docker stop neo4j_container || true
-	docker rm neo4j_container || true
+	docker stop neo4j-container || true
+	docker rm neo4j-container || true
 
 rebuild: stop build start
 

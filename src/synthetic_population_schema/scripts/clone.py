@@ -24,7 +24,7 @@ def load_data_into_neo4j(state_dir):
 
     for file in os.listdir(state_dir):
         if file.endswith(".txt"):
-            file_path = f"file:///var/lib/neo4j/import/2010/State/{file}"
+            file_path = f"/var/lib/neo4j/import/2010/State/{file}"
             parts = file.split("_")
             state_code = parts[2]
             class_name = "_".join(parts[3:]).replace(".txt", "")
