@@ -79,7 +79,7 @@ down:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) down
 
 logs:
-	docker logs neo4j-container
+	docker logs --details neo4j-container
 rebuild: stop_container build_container start_container
 
 # Python script targets

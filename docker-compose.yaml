@@ -17,13 +17,19 @@ services:
       NEO4J_AUTH: neo4j/synthpop_123
       NEO4J_dbms_security_allow__csv__import__from__file__urls: "true"
       NEO4J_server_directories_import: "/var/lib/neo4j/import"
-      NEO4J_dbms_memory_pagecache_size: 1G  # Optional tuning
-      NEO4J_dbms_memory_heap_initial__size: 2G
-      NEO4J_dbms_memory_heap_max__size: 4G
+      NEO4J_PLUGINS: '["apoc"]'  # Enables the APOC plugin
+      NEO4J_dbms_security_procedures_unrestricted: "apoc.*"  # Allows APOC procedures to run
+      NEO4J_dbms_security_procedures_allowlist: "apoc.*"
+      NEO4JLABS_PLUGINS: '["apoc"]'  # Alternative way to enable APOC
+      NEO4J_server_memory_pagecache_size: 4G  # Optional tuning
+      NEO4J_server_memory_heap_initial__size: 8G
+      NEO4J_server_memory_heap_max__size: 16G
     volumes:
       - /Users/Smoxon/.data/synthetic_populations:/var/lib/neo4j/import
-      - neo4j-data:/data  # Stores Neo4j database data
-      - neo4j-logs:/logs  # Stores logs
+      - /Users/Smoxon/.data/neo4j-data:/data  # Stores Neo4j database data
+      - /Users/Smoxon/.data/neo4j-logs:/logs  # Stores logs
+      - /Users/Smoxon/.data/neo4j_conf:/var/lib/neo4j/conf
+      - /Users/Smoxon/.data/neo4j_plugins:/plugins  # Mount the plugins directory
 
 volumes:
   neo4j-data:
